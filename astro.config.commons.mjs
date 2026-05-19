@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://commons.taride.org',
@@ -10,4 +11,7 @@ export default defineConfig({
     inlineStylesheets: 'auto',
   },
   compressHTML: true,
+  integrations: [
+    sitemap(),
+  ],
 });
