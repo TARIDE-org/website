@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <style>
+    path { fill: #10100B; }
+    @media (prefers-color-scheme: dark) {
+      path { fill: #F7F4ED; }
+    }
+  </style>
+  <g transform="translate(15.5,-49)">
+    <path d="M0,100 h24 v12 h-12 v74 h12 v12 h-24 z"/>
+    <path d="M52.5,133.61h-13.64v-8.06h35.77v8.06h-13.64v41.43h-8.48v-41.43Z"/>
+    <path fill-rule="evenodd" d="M100.9,125.55h8.62l19.23,49.48h-8.55l-4.52-11.73h-20.93l-4.52,11.73h-8.55l19.23-49.48ZM97.79,155.53h14.85l-7.42-19.3-7.42,19.3Z"/>
+    <path d="M145,100 h24 v98 h-24 v-12 h12 v-74 h-12 z"/>
+  </g>
+</svg>
