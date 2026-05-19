@@ -26,7 +26,7 @@ The homepage routes between them with explicit paths. It does not pick one and b
 - Umami admin: `umami.taride.org`.
 - DNS: TransIP. Records stay there; only A/AAAA and CNAMEs change.
 - Source repositories:
-  - Website: `github.com/TARIDE-org/website` (new, public, to be confirmed).
+  - Website: `github.com/TARIDE-org/website` (public).
   - Docs: `github.com/TARIDE-org/docs` (retained, editorial backend).
   - Design system: `github.com/TARIDE-org/design-system` (retained, consumed as dependency).
 - Language at launch: English (UK), single locale, matching the design system's typography rules and the Commons brief.
@@ -42,9 +42,7 @@ taride.org
 │   ├── /docs/threat-model/ Threat model
 │   ├── /docs/privacy/      Privacy analysis
 │   └── /docs/technical/    Technical summary
-├── /updates/               Changelog / news, with RSS at /updates/rss.xml
-│   └── /updates/[slug]/
-├── /governance/            Foundation, board (Martin Voorzanger, Leonard Wolters, one open seat), funders, conflict-of-interest
+├── /governance/            Foundation, board (Martin Voorzanger chair, Leonard Wolters secretary, one open seat), funders, conflict-of-interest
 ├── /review/                Get involved – targeted technical review programme
 ├── /donate/                Support the foundation
 ├── /press/                 Press kit – logos, boilerplate, bios, assets
@@ -61,13 +59,13 @@ Commons sits at `commons.taride.org` and is linked from the footer and from one 
 ## 5. Navigation
 
 **Header (sticky, single row):**
-`Taride` (wordmark, links home) · `Docs` · `Review` · `Updates` · `Governance` · `Donate` · `Contact`
+`Taride` (wordmark, links home) · `Docs` · `Review` · `Governance` · `Donate` · `Contact`
 
 **Footer.** Top: a single-line newsletter signup – email field, Subscribe button, one-line description ("Occasional updates from the foundation. Double opt-in. No tracking."). Below, four columns:
 
 1. Sitemap (the header items expanded, plus Press, Privacy, Imprint, Licence).
 2. Projects – currently `Commons →` only.
-3. Legal – Stichting name and KvK 42061504, location, `info@taride.org`, link to imprint. No ANBI claim.
+3. Legal – Stichting TARIDE · registered in Amsterdam · KvK 42061504 · `info@taride.org` · link to imprint. No ANBI claim.
 4. Source – design system, website repo, content licence.
 
 **On `/docs/`:** a left rail with the five document titles in reading order (foundation first), and a right rail with the current document's section headings as anchor links. On mobile both collapse into a top "Contents" disclosure.
@@ -79,15 +77,15 @@ In scope for v0:
 - **Docs renderer.** Astro content collections, anchored headings, copy-anchor-on-click, prev/next links between briefs.
 - **Full-text search across docs.** Pagefind, built at deploy time. Static, no server. Keyboard shortcut `/` to focus.
 - **Versioning signal.** Each doc renders its current version (e.g. `v0.51`) and a "last updated" timestamp from the most recent git commit to that file.
-- **Updates feed.** Markdown posts, list view, per-post pages, RSS at `/updates/rss.xml`.
+- **Changelog tail.** The foundation document renders a dated changelog at the bottom of `/docs/foundation/`. No standalone updates section; cadence is too low to justify one at launch.
 - **Outbound click counting via self-hosted Umami** for the Commons subsite (per the Commons brief). On the main site, page views only.
 - **Anchor-aware redirects.** Old GitHub Pages URLs 301 to their new paths.
-- **Donate page.** Static page presenting bank transfer (Triodos IBAN) and a hosted-checkout link to Mollie. No embedded payment widget; the rule against third-party scripts holds. Page states plainly that the foundation has no ANBI status and donations are not tax-deductible in the Netherlands.
-- **Mailing list signup.** Form posts to self-hosted Listmonk on the same Hetzner infrastructure. Double opt-in, EU-resident data, no cookies on the marketing site, no tracking pixels, unsubscribe link in every email.
+- **Donate page.** Static page presenting bank transfer (Triodos IBAN) and a hosted-checkout link to Mollie. No embedded payment widget; the rule against third-party scripts holds. Page states plainly that the foundation has no ANBI status and donations are not tax-deductible in the Netherlands. Suggested reference text: "TARIDE Foundation donation"; no enforced reference format.
+- **Mailing list signup.** Form posts to self-hosted Listmonk on the same Hetzner infrastructure, with outbound mail relayed through Mailjet (EU region). Double opt-in, EU-resident data, no cookies on the marketing site, no tracking pixels, unsubscribe link in every email.
 - **PDF builds.** Each `/docs/*` page has a downloadable PDF generated at build time from the same markdown source, using paged.js + headless Chromium so the design system's CSS renders directly without a parallel template.
 - **Custom 404.** Plain page with the search input and a link home.
 
-Deferred (see §13):
+Deferred:
 
 - On-site contact form. Contact happens via email or PR.
 - Inline annotation or comments on spec pages.
@@ -95,7 +93,7 @@ Deferred (see §13):
 ## 7. Content sources and sync
 
 - **Specification docs.** `TARIDE-org/docs` remains the editorial source. The website consumes those markdown files at build time via a pinned dependency or a CI checkout step. A push to docs triggers a website rebuild. No copy-paste duplication.
-- **Updates.** Authored in the website repo under `content/updates/*.md`. PR per post.
+- **Changelog entries.** Appended to the foundation document directly, in `content/docs/foundation.md` (or its source in `TARIDE-org/docs`). PR per entry.
 - **Governance, press, review, donate, contact pages.** Authored in the website repo. Short, mostly static.
 - **Commons content.** Per the Commons brief: per-organisation markdown files under `content/commons/` in the same repo (one Astro project, two outputs).
 
@@ -106,7 +104,7 @@ Deferred (see §13):
 - **Self-hosted IBM Plex** (Serif / Sans / Mono) woff2 served from the design-system bundle. No Google Fonts, no third-party font CDN.
 - **Hosting on Hetzner.** Existing Taride Hetzner infrastructure. Reverse proxy with automatic Let's Encrypt TLS serves both static sites on their respective subdomains. Umami, Listmonk, and any future services run alongside.
 - **Analytics: self-hosted Umami** on the same infrastructure, Postgres alongside, admin at `umami.taride.org`.
-- **Mailing list: self-hosted Listmonk** on the same infrastructure. Postgres alongside (shared instance acceptable). SMTP via a sovereign EU relay (to confirm, §13).
+- **Mailing list: self-hosted Listmonk** on the same infrastructure. Postgres alongside (shared instance acceptable). SMTP via Mailjet (EU region).
 - **Donate flow:** foundation account at Triodos Bank, hosted checkout via Mollie. Server-rendered page links out to Mollie and shows the Triodos IBAN for direct transfer. No client-side payment script.
 - **CI/CD.** GitHub Actions builds both site outputs, rsyncs over SSH to the Hetzner host, atomic swap via symlink.
 - **DNS.** TransIP. A/AAAA and CNAME records updated; nameservers unchanged.
@@ -152,21 +150,21 @@ Commons inherits the same system with one Commons-specific accent in section lab
 - PR to add or change a doc, an update, a press item, or a Commons entry. Build previews on PR.
 - "Last updated" rendered from the most recent commit to the file's directory.
 - Doc version (e.g. `v0.51`) read from frontmatter on the foundation doc; briefs inherit unless they override.
-- Maintainers and merge rights: to be confirmed (see §13).
+- Maintainer: `birdmeister` (sole admin). Push to `main` restricted to admins; no required review.
 
-## 13. Open decisions (defer to Martin)
+## 13. Resolutions
 
-These are not for Claude Code to resolve. Surface them as TODOs at the end of the build.
+The decisions originally listed here are settled. Kept as a log so the brief documents what was decided, not just what is true today.
 
-1. **Exact registered name** of the foundation for the imprint. KvK 42061504 confirmed. No ANBI status.
-2. **Hetzner infrastructure details** – which host, current reverse-proxy stack, existing services, SSH key handling.
-3. **Maintainer set** – who can merge to the website repo, who can deploy.
-4. **Updates cadence** – realistic posting rhythm. If quarterly or less, fold into the foundation doc's changelog rather than a standalone section.
-5. **Press boilerplate** – one-line and one-paragraph organisation descriptions. To be supplied.
-6. **Board bios** – photos (optional) and short bios for Martin Voorzanger, Leonard Wolters, and the third board seat once filled.
-7. **Repo location** – `TARIDE-org/website` proposed; confirm name.
-8. **Mailing list software and SMTP relay** – Listmonk on the same Hetzner infrastructure suggested. Confirm choice and which EU sender handles outbound mail.
-9. **Donate flow** – Mollie account setup; Triodos IBAN to display once the bank account is open; donation-reference convention.
+1. **Foundation legal entity** – Stichting TARIDE, registered in Amsterdam, KvK 42061504. No ANBI status.
+2. **Hetzner infrastructure** – Existing `prijsprofeet.nl` Hetzner host (Helsinki). Containerised `nginx:alpine` as reverse proxy, `certbot` on the host for Let's Encrypt. Self-hosted GitHub Actions runner registered to `TARIDE-org/website` at `/opt/actions-runner-taride`.
+3. **Maintainer set** – `birdmeister` is the sole admin. Push to `main` restricted to admins; no required review.
+4. **Updates cadence** – No standalone `/updates/` section. Folded into a dated changelog at the bottom of `/docs/foundation/`.
+5. **Press boilerplate** – Approved (one-line + one-paragraph). Lives on `/press/`.
+6. **Board** – Martin Voorzanger (Chairperson) and Leonard Wolters (Secretary); third seat open.
+7. **Repo location** – `github.com/TARIDE-org/website`, public.
+8. **Mailing list software and SMTP relay** – Listmonk on the same Hetzner host, sending via Mailjet (EU region).
+9. **Donate flow** – Foundation account at Triodos Bank, hosted checkout via Mollie. Donate page suggests a free-form reference ("TARIDE Foundation donation") with no enforced format. Outstanding operational tasks: open Triodos account, apply for Mollie, capture the IBAN and the checkout URL, then wire both into `/donate/`.
 
 ## 14. Definition of done for v0
 
