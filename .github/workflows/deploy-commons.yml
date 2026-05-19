@@ -1,0 +1,67 @@
+name: Deploy Commons
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/commons/**'
+      - 'src/shared/**'
+      - 'public/**'
+      - 'astro.config.commons.mjs'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/deploy-commons.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-commons
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+    env:
+      PUBLIC_UMAMI_URL: ${{ secrets.PUBLIC_UMAMI_URL }}
+      PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.PUBLIC_UMAMI_WEBSITE_ID }}
+      DEPLOY_ROOT: /srv/taride/commons
+      KEEP_RELEASES: 5
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Build Commons
+        run: npm run build:commons
+
+      - name: Atomic swap
+        run: |
+          set -euo pipefail
+          STAMP=$(date -u +%Y%m%d-%H%M%SZ)
+          NEW="${DEPLOY_ROOT}/releases/${STAMP}"
+          mkdir -p "${NEW}"
+          rsync -a --delete dist/commons/ "${NEW}/"
+          ln -sfn "${NEW}" "${DEPLOY_ROOT}/current.new"
+          mv -Tf "${DEPLOY_ROOT}/current.new" "${DEPLOY_ROOT}/current"
+          ls -1t "${DEPLOY_ROOT}/releases" | tail -n +$((KEEP_RELEASES + 1)) | while read -r old; do
+            rm -rf "${DEPLOY_ROOT}/releases/${old}"
+          done
+          echo "deployed: ${STAMP}"
+
+      - name: Smoke test (HEAD /)
+        run: |
+          for i in 1 2 3 4 5; do
+            code=$(curl -ksSo /dev/null -w "%{http_code}" -H "Host: commons.taride.org" https://127.0.0.1/) || code=000
+            echo "attempt ${i}: ${code}"
+            [ "${code}" = "200" ] && exit 0
+            sleep 1
+          done
+          exit 1
