@@ -1,0 +1,237 @@
+/* TARIDE Design System — tokens
+   Sourced from TARIDE-org/design-system, colors_and_type.css.
+   Font URLs adjusted to absolute paths served from /public/fonts/.
+*/
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/fonts/IBMPlexSans-VF.woff2') format('woff2-variations'),
+       url('/fonts/IBMPlexSans-VF.woff2') format('woff2');
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/fonts/IBMPlexSans-Italic-VF.woff2') format('woff2-variations'),
+       url('/fonts/IBMPlexSans-Italic-VF.woff2') format('woff2');
+  font-weight: 100 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Serif';
+  src: url('/fonts/IBMPlexSerif-VF.woff2') format('woff2-variations'),
+       url('/fonts/IBMPlexSerif-VF.woff2') format('woff2');
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Serif';
+  src: url('/fonts/IBMPlexSerif-Italic-VF.woff2') format('woff2-variations'),
+       url('/fonts/IBMPlexSerif-Italic-VF.woff2') format('woff2');
+  font-weight: 100 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBMPlexMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBMPlexMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/IBMPlexMono-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* Color · raw */
+  --ink-100:   #10100B;
+  --ink-80:    #2A2823;
+  --ink-70:    #3D3A33;
+  --ink-50:    #5A5650;
+  --stone-500: #8A847A;
+  --stone-300: #BFB8AC;
+  --rule:      #D8D2C3;
+  --paper-100: #F7F4ED;
+  --paper-200: #EFEBE0;
+  --paper-300: #E5E0D2;
+  --paper-0:   #FDFCF8;
+
+  --signal-blue:        #0A55C7;
+  --signal-blue-deep:   #063B92;
+  --signal-blue-tint:   #E3ECFA;
+  --signal-yellow:      #E8B43A;
+  --signal-yellow-tint: #F9EDC8;
+
+  --signal-success: #2D7A5A;
+  --signal-warning: #9C6612;
+  --signal-error:   #B43A3A;
+  --signal-error-tint: #F6E1DE;
+
+  /* Color · semantic */
+  --fg:           var(--ink-100);
+  --fg-soft:      var(--ink-70);
+  --fg-muted:     var(--stone-500);
+  --bg:           var(--paper-100);
+  --bg-raised:    var(--paper-200);
+  --bg-overlay:   var(--paper-0);
+  --border:       var(--rule);
+  --accent:       var(--signal-blue);
+  --accent-fg:    var(--paper-100);
+  --accent-tint:  var(--signal-blue-tint);
+  --verified:     var(--signal-yellow);
+  --verified-bg:  var(--signal-yellow-tint);
+
+  --focus-ring:   0 0 0 3px var(--signal-blue-tint), 0 0 0 1.5px var(--signal-blue);
+
+  /* Type · families */
+  --font-display: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+  --font-body:    'IBM Plex Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono:    'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* Type · scale */
+  --fs-display: 84px;
+  --fs-h1:      48px;
+  --fs-h2:      32px;
+  --fs-h3:      22px;
+  --fs-h4:      18px;
+  --fs-body:    17px;
+  --fs-small:   15px;
+  --fs-caption: 12px;
+  --fs-mono:    14px;
+  --fs-mono-sm: 12px;
+
+  --lh-display: 1.05;
+  --lh-heading: 1.2;
+  --lh-body:    1.6;
+  --lh-tight:   1.4;
+
+  --tr-eyebrow: 0.12em;
+  --tr-caption: 0.04em;
+  --tr-display: -0.015em;
+
+  /* Spacing */
+  --sp-0:   0;
+  --sp-1:   4px;
+  --sp-2:   8px;
+  --sp-3:   12px;
+  --sp-4:   16px;
+  --sp-5:   24px;
+  --sp-6:   32px;
+  --sp-7:   48px;
+  --sp-8:   64px;
+  --sp-9:   96px;
+  --sp-10: 128px;
+
+  /* Radii */
+  --radius-0:    0;
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-pill: 999px;
+
+  /* Elevation */
+  --elev-0: none;
+  --elev-1: 0 1px 0 var(--rule);
+  --elev-2: 0 1px 2px rgba(16,16,11,0.06), 0 1px 0 var(--rule);
+  --elev-3: 0 6px 24px rgba(16,16,11,0.08), 0 1px 0 var(--rule);
+
+  /* Motion */
+  --motion-fast:    120ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  --motion-default: 180ms cubic-bezier(0.4, 0.0, 0.2, 1);
+
+  /* Layout */
+  --container-max:    1200px;
+  --container-reading: 680px;
+  --container-narrow:  560px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg:          #F2EFE6;
+    --fg-soft:     #C9C5BC;
+    --fg-muted:    #8E8A82;
+    --bg:          #14140F;
+    --bg-raised:   #1D1D17;
+    --bg-overlay:  #25241D;
+    --border:      #322F27;
+    --accent:      #4FA8FF;
+    --accent-fg:   #14140F;
+    --accent-tint: #15263F;
+    --signal-blue-deep: #85BFFF;
+    --verified:    #F4CC5B;
+    --verified-bg: #2F2412;
+    --signal-success: #5EC990;
+    --signal-warning: #E0A75F;
+    --signal-error:   #FF7A6D;
+    --signal-error-tint: #2F1815;
+    --focus-ring:  0 0 0 3px rgba(79,168,255,0.25), 0 0 0 1.5px #4FA8FF;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--fg);
+  letter-spacing: var(--tr-display);
+  margin: 0;
+}
+.display { font-size: var(--fs-display); line-height: var(--lh-display); font-weight: 400; }
+h1, .h1   { font-size: var(--fs-h1);      line-height: var(--lh-heading); }
+h2, .h2   { font-size: var(--fs-h2);      line-height: var(--lh-heading); }
+h3, .h3   { font-size: var(--fs-h3);      line-height: var(--lh-heading); font-family: var(--font-body); font-weight: 500; letter-spacing: 0; }
+h4, .h4   { font-size: var(--fs-h4);      line-height: var(--lh-heading); font-family: var(--font-body); font-weight: 500; letter-spacing: 0; }
+
+p, .body  { font-size: var(--fs-body); line-height: var(--lh-body); margin: 0 0 var(--sp-4); }
+.small    { font-size: var(--fs-small); line-height: var(--lh-tight); }
+.caption  { font-size: var(--fs-caption); color: var(--fg-muted); letter-spacing: var(--tr-caption); }
+.eyebrow  { font-family: var(--font-mono); font-size: var(--fs-mono-sm); text-transform: uppercase;
+            letter-spacing: var(--tr-eyebrow); color: var(--accent); }
+
+code, kbd, samp, pre, .mono { font-family: var(--font-mono); font-size: var(--fs-mono); }
+pre { background: var(--bg-raised); padding: var(--sp-4) var(--sp-5); border-left: 2px solid var(--accent); overflow-x: auto; }
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--motion-fast);
+}
+a:hover { color: var(--signal-blue-deep); }
+
+::selection { background: var(--accent-tint); color: var(--fg); }
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-xs);
+}

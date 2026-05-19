@@ -1,0 +1,123 @@
+---
+import { getCollection, render } from 'astro:content';
+import Default from '../layouts/Default.astro';
+import OrgEntry from '../components/OrgEntry.astro';
+import { themes } from '../content/themes.ts';
+
+const allOrgs = await getCollection('organisations');
+
+const orgsByTheme = themes.map((theme) => ({
+  ...theme,
+  orgs: allOrgs
+    .filter((o) => o.data.theme === theme.key)
+    .sort((a, b) => a.data.order - b.data.order),
+}));
+
+const lastUpdated = '19 May 2026';
+
+const title = 'Commons: a curated guide to European non-profits keeping digital infrastructure independent';
+const description = 'A short, curated list of European non-profits maintaining digital public goods: privacy, open source, free knowledge, independent journalism, open AI. Donate directly, no platform in the middle.';
+---
+
+<Default title={title} description={description}>
+  <div class="container">
+
+    <section class="page-intro">
+      <p class="hosted-by">Hosted by Taride</p>
+      <h1>Commons</h1>
+      <p class="lede">A curated guide to European non-profits keeping our digital infrastructure independent, open, and trustworthy.</p>
+    </section>
+
+    <hr class="divider" />
+
+    <section>
+      <h2>Why this exists</h2>
+      <p>
+        Most of the web you depend on (encrypted messaging, free encyclopedias, open browsers, secure protocols, independent newsrooms) is kept alive by a small set of organisations that run on donations and grants. They are scattered across Europe. You probably want to support a few, but you don't know which ones, and you don't want to spend an evening tracking down their donation pages.
+      </p>
+      <p>This is that page.</p>
+      <p>
+        We focus on Europe, on digital public goods, and on the boring infrastructure that keeps everything working. No platform, no payment processing, no account. You click through to each organisation and donate directly. The list is short on purpose.
+      </p>
+    </section>
+
+    <section class="criteria">
+      <h2>How we choose</h2>
+      <p>To be listed here, an organisation must:</p>
+      <ul>
+        <li>be registered and active in Europe;</li>
+        <li>hold non-profit, charitable, or equivalent status;</li>
+        <li>work on a digital public good (privacy, open source infrastructure, free knowledge, independent journalism, or open digital standards);</li>
+        <li>accept individual donations;</li>
+        <li>publish an annual report or otherwise be transparent about how the money is used;</li>
+        <li>not depend exclusively on government funding.</li>
+      </ul>
+      <p>We don't take a cut. We don't track you. We aren't paid for inclusion or placement.</p>
+      <p>This list is curated by Taride, a European trust-infrastructure project. Taride is not on the list itself; we work in this space and chose not to grade our own homework.</p>
+    </section>
+
+    <nav class="toc" aria-label="Section index">
+      <p class="toc-label">Sections</p>
+      <ol class="toc-list">
+        {orgsByTheme.map((theme, i) => (
+          <li>
+            <a href={`#${theme.key}`}>
+              <span class="toc-num">§ {String(i + 1).padStart(2, '0')}</span>
+              <span class="toc-title">{theme.title}</span>
+              <span class="toc-count">{theme.orgs.length}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <hr class="divider" />
+
+    {orgsByTheme.map((theme, i) => (
+      <section class="theme-section" id={theme.key}>
+        <span class="theme-eyebrow">§ {String(i + 1).padStart(2, '0')}</span>
+        <h2>{theme.title}</h2>
+        {theme.orgs.map(async (org) => {
+          const { Content } = await render(org);
+          return (
+            <OrgEntry
+              name={org.data.name}
+              country={org.data.country}
+              url={org.data.url}
+              fiscalStatus={org.data.fiscal_status}
+            >
+              <Content />
+            </OrgEntry>
+          );
+        })}
+      </section>
+    ))}
+
+    <hr class="divider" />
+
+    <section class="closing">
+      <h2>A note on what's missing</h2>
+      <p>
+        Some of the most important European digital sovereignty work is funded by governments and the EU rather than donations. The Sovereign Tech Agency, OpenEuroLLM, and the EuroHPC AI factories don't take individual contributions. We mention them for context: if you want to support that work, the route is political, not financial.
+      </p>
+
+      <h2>Suggest an organisation</h2>
+      <p>
+        If you know a European non-profit that meets the criteria and isn't here, get in touch. We keep this list short on purpose, but we want to know what we're missing.
+      </p>
+      <p>
+        Contact: <a href="mailto:info@taride.org">info@taride.org</a>
+      </p>
+
+      <h2>About</h2>
+      <p>
+        Commons is a project of <a href="https://taride.org" rel="noopener">Taride</a>, a European trust-infrastructure initiative. We work on protocols for digital identity and integrity. This list is one small contribution: showing where else to support the European digital public goods we all depend on.
+      </p>
+    </section>
+
+    <p class="last-updated">
+      Last updated: {lastUpdated}. We are not lawyers or tax advisors; check the deductibility of donations with your own tax authority. Suggestions and corrections welcome.
+    </p>
+
+  </div>
+</Default>

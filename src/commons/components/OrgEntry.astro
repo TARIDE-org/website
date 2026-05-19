@@ -1,0 +1,32 @@
+---
+interface Props {
+  name: string;
+  country: string;
+  url: string;
+  fiscalStatus?: string;
+}
+
+const { name, country, url, fiscalStatus } = Astro.props;
+const displayUrl = url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+---
+
+<article class="org">
+  <h3>{name}</h3>
+  <p class="meta">
+    {country}
+    {fiscalStatus && <span class="fiscal">· {fiscalStatus}</span>}
+  </p>
+  <div class="body-text">
+    <slot />
+  </div>
+  <a
+    class="visit"
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    data-umami-event="outbound-click"
+    data-umami-event-org={name}
+  >
+    {displayUrl}
+  </a>
+</article>

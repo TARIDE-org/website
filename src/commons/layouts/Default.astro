@@ -1,0 +1,62 @@
+---
+import '../../shared/styles/tokens.css';
+import '../styles/commons.css';
+import Umami from '../../shared/components/Umami.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/assets/taride-logo-mono.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#F7F4ED" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#14140F" media="(prefers-color-scheme: dark)" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <Umami />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <a href="/" class="wordmark">
+          <span class="wordmark-name">Commons</span>
+        </a>
+        <a href="https://taride.org" class="meta-link" rel="noopener">
+          a project of Taride <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          Commons is a project of <a href="https://taride.org" rel="noopener">Taride</a>.
+          Contact: <a href="mailto:info@taride.org">info@taride.org</a>.
+        </p>
+        <p class="caption">
+          Hosted in Europe. No cookies, no tracking pixels. Self-hosted analytics only.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

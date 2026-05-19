@@ -1,0 +1,15 @@
+---
+const umamiUrl = import.meta.env.PUBLIC_UMAMI_URL;
+const umamiId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
+const enabled = umamiUrl && umamiId;
+---
+
+{enabled && (
+  <script
+    is:inline
+    defer
+    src={umamiUrl}
+    data-website-id={umamiId}
+    data-domains="commons.taride.org,taride.org"
+  />
+)}

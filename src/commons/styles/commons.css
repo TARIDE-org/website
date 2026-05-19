@@ -1,0 +1,243 @@
+/* Commons subsite styles. Inherits tokens.css for design system.
+   Commons-specific accent: monospace section numbers (§01, §02, ...) before
+   theme titles, in accent blue.
+*/
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--accent);
+  color: var(--accent-fg);
+  padding: var(--sp-2) var(--sp-4);
+  z-index: 100;
+}
+.skip-link:focus {
+  left: var(--sp-4);
+  top: var(--sp-4);
+}
+
+.container {
+  max-width: var(--container-reading);
+  margin: 0 auto;
+  padding: 0 var(--sp-5);
+}
+
+/* Header */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: var(--sp-5) 0;
+  margin-bottom: var(--sp-8);
+}
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+.wordmark {
+  text-decoration: none;
+  color: var(--fg);
+}
+.wordmark-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  letter-spacing: var(--tr-display);
+}
+.meta-link {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--tr-eyebrow);
+  color: var(--fg-muted);
+  text-decoration: none;
+}
+.meta-link:hover {
+  color: var(--accent);
+}
+
+/* Page intro */
+.page-intro h1 {
+  font-size: var(--fs-h1);
+  margin-bottom: var(--sp-5);
+}
+.page-intro .hosted-by {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: var(--sp-7);
+}
+.page-intro .lede {
+  font-size: var(--fs-h4);
+  line-height: var(--lh-tight);
+  color: var(--fg-soft);
+  margin-bottom: var(--sp-5);
+}
+
+/* Section divider */
+.divider {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: var(--sp-8) 0;
+}
+
+/* Criteria list */
+.criteria h2 {
+  margin-bottom: var(--sp-4);
+}
+.criteria ul {
+  padding-left: var(--sp-5);
+  margin-bottom: var(--sp-5);
+}
+.criteria li {
+  margin-bottom: var(--sp-2);
+}
+
+/* Table of contents */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+.toc {
+  margin: var(--sp-7) 0;
+  padding: var(--sp-5);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+}
+.toc-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--tr-eyebrow);
+  color: var(--fg-muted);
+  margin: 0 0 var(--sp-3);
+}
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.toc-list li {
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+.toc-list li:first-child {
+  border-top: 0;
+}
+.toc-list a {
+  display: flex;
+  gap: var(--sp-4);
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--fg);
+  padding: var(--sp-2) 0;
+  transition: color var(--motion-fast);
+}
+.toc-list a:hover .toc-title,
+.toc-list a:focus-visible .toc-title {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.toc-num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--accent);
+  letter-spacing: var(--tr-eyebrow);
+  flex-shrink: 0;
+  min-width: 3.5em;
+}
+.toc-title {
+  flex: 1;
+  font-size: var(--fs-body);
+}
+.toc-count {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--fg-muted);
+  letter-spacing: var(--tr-caption);
+  flex-shrink: 0;
+}
+
+/* Theme section */
+.theme-section {
+  margin-bottom: var(--sp-8);
+  scroll-margin-top: var(--sp-5);
+}
+.theme-section .theme-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--tr-eyebrow);
+  color: var(--accent);
+  margin-bottom: var(--sp-2);
+  display: block;
+}
+.theme-section h2 {
+  margin-bottom: var(--sp-6);
+}
+
+/* Org entry */
+.org {
+  margin-bottom: var(--sp-7);
+}
+.org h3 {
+  margin-bottom: var(--sp-1);
+}
+.org .meta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  letter-spacing: var(--tr-caption);
+  color: var(--fg-muted);
+  margin-bottom: var(--sp-3);
+}
+.org .meta .fiscal {
+  margin-left: var(--sp-3);
+}
+.org .body-text {
+  margin-bottom: var(--sp-3);
+}
+.org .visit {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+}
+.org .visit::before {
+  content: "→ ";
+  color: var(--fg-muted);
+}
+
+/* Closing sections */
+.closing h2 {
+  margin-bottom: var(--sp-4);
+}
+.closing p {
+  margin-bottom: var(--sp-5);
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: var(--sp-9);
+  padding: var(--sp-6) 0 var(--sp-8);
+}
+.site-footer .container > * {
+  margin-bottom: var(--sp-3);
+}
+.site-footer .container > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Last-updated note */
+.last-updated {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  letter-spacing: var(--tr-caption);
+  color: var(--fg-muted);
+  margin-top: var(--sp-7);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--border);
+}
