@@ -84,10 +84,12 @@
   margin: var(--sp-8) 0;
 }
 
-/* Criteria list */
-.criteria h2 {
+/* Default h2 spacing for prose sections; design system zeroes heading margins. */
+section h2 {
   margin-bottom: var(--sp-4);
 }
+
+/* Criteria list */
 .criteria ul {
   padding-left: var(--sp-5);
   margin-bottom: var(--sp-5);
@@ -211,9 +213,6 @@
 }
 
 /* Closing sections */
-.closing h2 {
-  margin-bottom: var(--sp-4);
-}
 .closing p {
   margin-bottom: var(--sp-5);
 }
