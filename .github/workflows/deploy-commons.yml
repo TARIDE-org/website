@@ -49,7 +49,9 @@ jobs:
           NEW="${DEPLOY_ROOT}/releases/${STAMP}"
           mkdir -p "${NEW}"
           rsync -a --delete dist/commons/ "${NEW}/"
-          ln -sfn "${NEW}" "${DEPLOY_ROOT}/current.new"
+          # Relative symlink target so the path resolves both on the host and
+          # inside the nginx container, which mounts /srv/taride at /var/www/taride.
+          ln -sfn "releases/${STAMP}" "${DEPLOY_ROOT}/current.new"
           mv -Tf "${DEPLOY_ROOT}/current.new" "${DEPLOY_ROOT}/current"
           ls -1t "${DEPLOY_ROOT}/releases" | tail -n +$((KEEP_RELEASES + 1)) | while read -r old; do
             rm -rf "${DEPLOY_ROOT}/releases/${old}"
