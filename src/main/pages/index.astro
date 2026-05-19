@@ -1,0 +1,66 @@
+---
+import Default from '../layouts/Default.astro';
+
+const title = 'TARIDE: an open European protocol for digital trust';
+const description = 'TARIDE develops infrastructure for verifying credentials and authenticity between institutions and individuals without disclosing identifying information. Pseudonymity by default. Identification by choice.';
+
+const routes = [
+  {
+    href: '/docs/',
+    title: 'Specifications',
+    blurb: 'The foundation document and four supporting briefs: telecom, threat model, privacy analysis, technical summary. Currently at v0.51.',
+  },
+  {
+    href: '/review/',
+    title: 'Technical review',
+    blurb: 'The foundation actively solicits feedback from telecom providers, security researchers, privacy advocates, and the DID/SSI community.',
+  },
+  {
+    href: '/governance/',
+    title: 'The foundation',
+    blurb: 'How TARIDE is structured, who runs it, how it is funded.',
+  },
+  {
+    href: '/contact/',
+    title: 'Contact',
+    blurb: 'info@taride.org',
+  },
+];
+
+const lastUpdated = '19 May 2026';
+const docVersion = 'v0.51';
+---
+
+<Default title={title} description={description}>
+  <div class="container-reading">
+
+    <section class="hero">
+      <span class="eyebrow">TARIDE Foundation</span>
+      <h1>An open European protocol for digital trust.</h1>
+      <p class="lede">
+        TARIDE develops infrastructure for verifying credentials and authenticity between institutions and individuals without disclosing identifying information. Designed to interoperate with eIDAS 2.0 and the European Digital Identity Wallet.
+      </p>
+      <p class="kicker">Pseudonymity by default. Identification by choice.</p>
+    </section>
+
+    <hr class="divider" />
+
+    <nav class="routes" aria-label="Primary destinations">
+      {routes.map((route, i) => (
+        <a class="route" href={route.href}>
+          <span class="num">§ {String(i + 1).padStart(2, '0')}</span>
+          <div class="body">
+            <h2>{route.title}</h2>
+            <p>{route.blurb}</p>
+          </div>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      ))}
+    </nav>
+
+    <p class="status">
+      Foundation document {docVersion}. Last updated {lastUpdated}.
+    </p>
+
+  </div>
+</Default>

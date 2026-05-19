@@ -1,0 +1,44 @@
+---
+import Default from '../layouts/Default.astro';
+
+const title = 'Donate | TARIDE Foundation';
+const description = 'Support the foundation directly. No platform in the middle.';
+---
+
+<Default title={title} description={description} pageId="donate">
+  <div class="container-reading">
+
+    <span class="page-eyebrow">Support the foundation</span>
+    <h1 class="page-title">Donate</h1>
+    <p class="page-lede">
+      The foundation operates on grants, public funding, and individual donations. There is no commercial revenue. Every donation goes directly to the foundation's bank account; no platform fee, no middleman.
+    </p>
+
+    <div class="callout">
+      <p><strong>No ANBI status.</strong> Stichting TARIDE does not currently hold ANBI registration with the Dutch tax authority. Donations are not tax-deductible in the Netherlands. The foundation does not issue formal donation receipts.</p>
+    </div>
+
+    <h2>By bank transfer (SEPA)</h2>
+    <p>
+      Once the foundation's Triodos Bank account is open, the IBAN will appear here. Until then, please use the hosted-checkout link below or email <a href="mailto:info@taride.org">info@taride.org</a> for current banking details.
+    </p>
+
+    <h2>By hosted checkout (Mollie)</h2>
+    <p>
+      Once Mollie is configured, a single-click donation link (supporting iDEAL, SEPA, and card) will appear here. No payment script runs on this site; the checkout happens on Mollie's own domain.
+    </p>
+
+    <h2>Suggested reference</h2>
+    <p>
+      If your bank asks for a payment reference, "TARIDE Foundation donation" is sufficient. No specific format is required.
+    </p>
+
+    <h2>Other ways to support</h2>
+    <ul>
+      <li><strong>Technical review:</strong> see the <a href="/review/">review programme</a>.</li>
+      <li><strong>Introductions</strong> to funders, partners, or relevant practitioners: <a href="mailto:info@taride.org">info@taride.org</a>.</li>
+      <li><strong>Adoption:</strong> operators considering the protocol in their stack are encouraged to get in touch early.</li>
+    </ul>
+
+  </div>
+</Default>

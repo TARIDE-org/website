@@ -1,0 +1,45 @@
+---
+import Default from '../layouts/Default.astro';
+
+const title = 'Technical review | TARIDE Foundation';
+const description = 'The foundation actively solicits feedback from telecom, security, privacy, and DID/SSI practitioners.';
+---
+
+<Default title={title} description={description} pageId="review">
+  <div class="container-reading">
+
+    <span class="page-eyebrow">Get involved</span>
+    <h1 class="page-title">Technical review</h1>
+    <p class="page-lede">
+      The TARIDE specification is published in public, in draft, and explicitly seeking review. Four audiences are addressed directly.
+    </p>
+
+    <h2>Who the foundation is asking</h2>
+    <ul>
+      <li><strong>Telecom providers</strong>:credential lifecycle, subscriber binding, registry interfaces.</li>
+      <li><strong>Security researchers</strong>:threat model, cryptographic constructions, attack taxonomy.</li>
+      <li><strong>Privacy advocates and regulators</strong>:GDPR alignment, unlinkability, retention.</li>
+      <li><strong>DID and SSI practitioners</strong>:standards alignment, resolver architecture, interoperability.</li>
+    </ul>
+
+    <h2>What kind of feedback is useful</h2>
+    <p>
+      Specific, scoped, and falsifiable. The most useful contributions identify an assumption that does not hold, propose a concrete change, or flag a downstream implication the foundation has not considered. Endorsements without substance are less helpful than well-aimed criticism.
+    </p>
+
+    <h2>How to send it</h2>
+    <p>
+      Two channels:
+    </p>
+    <ul>
+      <li>For specific document or section feedback: an issue or pull request on <a href="https://github.com/TARIDE-org/docs" rel="noopener">TARIDE-org/docs</a>.</li>
+      <li>For broader conversations, an introduction, or to flag adjacent work: <a href="mailto:info@taride.org">info@taride.org</a>.</li>
+    </ul>
+
+    <h2>What you can expect back</h2>
+    <p>
+      Acknowledgement within five working days. Substantive responses to substantive review. The foundation publishes a feedback summary at the close of each review window; named reviewers are credited unless they ask not to be.
+    </p>
+
+  </div>
+</Default>

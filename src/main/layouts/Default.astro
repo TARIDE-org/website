@@ -1,0 +1,116 @@
+---
+import '../../shared/styles/tokens.css';
+import '../styles/main.css';
+import Umami from '../../shared/components/Umami.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pageId?: string;
+}
+
+const { title, description, pageId } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+
+const nav = [
+  { href: '/docs/',       label: 'Docs',       id: 'docs' },
+  { href: '/review/',     label: 'Review',     id: 'review' },
+  { href: '/governance/', label: 'Governance', id: 'governance' },
+  { href: '/donate/',     label: 'Donate',     id: 'donate' },
+  { href: '/contact/',    label: 'Contact',    id: 'contact' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/assets/favicon-ta.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#F7F4ED" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#14140F" media="(prefers-color-scheme: dark)" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <Umami />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <a href="/" class="wordmark" aria-label="TARIDE, home">
+          <svg viewBox="0 98 354.52 102" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M348.53,107.32h-18.2v-6.52h24.19v97.19h-24.19v-5.87h18.2v-84.8Z"/>
+            <path fill="currentColor" d="M5.99,191.31h18.2v6.52H0v-97.19h24.19v5.87H5.99v84.8Z"/>
+            <path fill="currentColor" d="M52.5,133.61h-13.64v-8.06h35.77v8.06h-13.64v41.43h-8.48v-41.43Z"/>
+            <path fill="currentColor" fill-rule="evenodd" d="M100.9,125.55h8.62l19.23,49.48h-8.55l-4.52-11.73h-20.93l-4.52,11.73h-8.55l19.23-49.48ZM97.79,155.53h14.85l-7.42-19.3-7.42,19.3Z"/>
+            <path fill="currentColor" fill-rule="evenodd" d="M142.65,125.55h16.26c9.83,0,16.4,6.36,16.4,15.41,0,7.42-3.96,13.08-11.03,14.84l12.37,19.23h-9.9l-11.73-18.66h-3.89v18.66h-8.48v-49.48ZM166.68,140.96c0-4.88-3.39-7.35-8.84-7.35h-6.72v14.7h6.72c5.44,0,8.84-2.47,8.84-7.35Z"/>
+            <path fill="currentColor" d="M196.04,125.55h8.48v49.48h-8.48v-49.48Z"/>
+            <path fill="currentColor" fill-rule="evenodd" d="M267.6,150.3c0,14.28-10.04,24.74-24.46,24.74h-15.97v-49.48h15.97c14.42,0,24.46,10.46,24.46,24.74ZM258.97,150.3c0-9.05-6.08-16.68-15.69-16.68h-7.64v33.37h7.64c9.61,0,15.69-7.71,15.69-16.68Z"/>
+            <path fill="currentColor" d="M291.96,145.63h19.79v8.06h-19.79v13.29h21.91v8.06h-30.4v-49.48h29.97v8.06h-21.49v12.02Z"/>
+          </svg>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          {nav.map((item) => (
+            <a href={item.href} aria-current={pageId === item.id ? 'page' : undefined}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>Sitemap</h4>
+            <ul>
+              <li><a href="/docs/">Docs</a></li>
+              <li><a href="/review/">Review</a></li>
+              <li><a href="/governance/">Governance</a></li>
+              <li><a href="/donate/">Donate</a></li>
+              <li><a href="/press/">Press</a></li>
+              <li><a href="/contact/">Contact</a></li>
+              <li><a href="/privacy/">Privacy</a></li>
+              <li><a href="/imprint/">Imprint</a></li>
+              <li><a href="/licence/">Licence</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Projects</h4>
+            <ul>
+              <li><a href="https://commons.taride.org" rel="noopener">Commons →</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <p class="body-text">Stichting TARIDE</p>
+            <p class="body-text">Registered in Amsterdam</p>
+            <p class="body-text">KvK 42061504</p>
+            <p class="body-text"><a href="mailto:info@taride.org">info@taride.org</a></p>
+            <p class="body-text"><a href="/imprint/">Imprint →</a></p>
+          </div>
+          <div class="footer-col">
+            <h4>Source</h4>
+            <ul>
+              <li><a href="https://github.com/TARIDE-org/website" rel="noopener">Website repo →</a></li>
+              <li><a href="https://github.com/TARIDE-org/docs" rel="noopener">Docs repo →</a></li>
+              <li><a href="https://github.com/TARIDE-org/design-system" rel="noopener">Design system →</a></li>
+              <li><a href="/licence/">CC BY 4.0</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

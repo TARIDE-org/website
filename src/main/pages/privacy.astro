@@ -1,0 +1,52 @@
+---
+import Default from '../layouts/Default.astro';
+
+const title = 'Privacy | TARIDE Foundation';
+const description = 'How this website handles visitor data.';
+---
+
+<Default title={title} description={description}>
+  <div class="container-reading">
+
+    <span class="page-eyebrow">Privacy statement</span>
+    <h1 class="page-title">Privacy</h1>
+    <p class="page-lede">
+      This website does not set cookies, run third-party scripts, or share visitor data with any external party. Analytics are self-hosted on European infrastructure and record aggregate metrics only.
+    </p>
+
+    <h2>What is collected</h2>
+    <p>
+      A self-hosted Umami instance running on the same Hetzner host as this site records aggregate page views (URL, day, browser family, referrer, country). IP addresses are not stored; visitors are not tracked across sessions.
+    </p>
+
+    <h2>What is not collected</h2>
+    <ul>
+      <li>No cookies of any kind.</li>
+      <li>No third-party analytics or advertising scripts.</li>
+      <li>No persistent identifiers.</li>
+      <li>No cross-site tracking.</li>
+      <li>No social media tracking pixels.</li>
+    </ul>
+
+    <h2>Email</h2>
+    <p>
+      Messages sent to <a href="mailto:info@taride.org">info@taride.org</a> are read by the board and kept for as long as the conversation is active. Email is hosted on European infrastructure.
+    </p>
+
+    <h2>Mailing list</h2>
+    <p>
+      When the foundation runs a mailing list, it will use self-hosted Listmonk with double opt-in and an unsubscribe link in every message. Subscriber data lives on the same Hetzner host. Outbound mail is relayed through Mailjet (EU region).
+    </p>
+
+    <h2>Donations</h2>
+    <p>
+      The donate page does not embed any payment script. Bank transfers happen on your own banking infrastructure; hosted-checkout donations happen on Mollie's domain. The foundation receives only the transaction confirmation from those channels, which is retained for accounting purposes for the period required by Dutch law.
+    </p>
+
+    <h2>Rights</h2>
+    <p>
+      Under the GDPR, you have the right to access, correct, or delete personal data the foundation holds about you. Contact <a href="mailto:info@taride.org">info@taride.org</a>.
+    </p>
+
+  </div>
+</Default>

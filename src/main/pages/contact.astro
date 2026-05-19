@@ -1,0 +1,33 @@
+---
+import Default from '../layouts/Default.astro';
+
+const title = 'Contact | TARIDE Foundation';
+const description = 'How to reach the foundation.';
+---
+
+<Default title={title} description={description} pageId="contact">
+  <div class="container-reading">
+
+    <span class="page-eyebrow">TARIDE Foundation</span>
+    <h1 class="page-title">Contact</h1>
+    <p class="page-lede">
+      The foundation does not run an on-site contact form. Email is the canonical channel.
+    </p>
+
+    <h2>General</h2>
+    <p>
+      <a href="mailto:info@taride.org">info@taride.org</a> reaches the board. Response within five working days for substantive enquiries; faster for press.
+    </p>
+
+    <h2>Technical review</h2>
+    <p>
+      Reviewers in telecom, security, privacy, or digital-identity practice: see the <a href="/review/">review programme</a> for what is currently being sought.
+    </p>
+
+    <h2>Specification feedback</h2>
+    <p>
+      Open an issue or pull request against <a href="https://github.com/TARIDE-org/docs" rel="noopener">TARIDE-org/docs</a>. Substantive review prefers GitHub; broader questions go to the email address above.
+    </p>
+
+  </div>
+</Default>

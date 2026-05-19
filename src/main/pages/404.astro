@@ -1,0 +1,20 @@
+---
+import Default from '../layouts/Default.astro';
+
+const title = '404 | TARIDE Foundation';
+const description = 'Page not found.';
+---
+
+<Default title={title} description={description}>
+  <div class="container-reading">
+
+    <span class="page-eyebrow">404</span>
+    <h1 class="page-title">Page not found.</h1>
+    <p class="page-lede">
+      The link you followed does not resolve. The site has been moved off GitHub Pages onto Hetzner-hosted infrastructure; some older URLs may have changed.
+    </p>
+
+    <p>Try the <a href="/">homepage</a>, the <a href="/docs/">specifications</a>, or email <a href="mailto:info@taride.org">info@taride.org</a> if you were looking for something specific.</p>
+
+  </div>
+</Default>

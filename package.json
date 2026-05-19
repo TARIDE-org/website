@@ -5,11 +5,16 @@
   "private": true,
   "description": "TARIDE Foundation website. One Astro project, two outputs: taride.org and commons.taride.org.",
   "scripts": {
-    "dev": "astro dev --config astro.config.commons.mjs",
+    "dev": "astro dev --config astro.config.main.mjs",
     "dev:commons": "astro dev --config astro.config.commons.mjs",
+    "dev:main": "astro dev --config astro.config.main.mjs",
     "build:commons": "astro build --config astro.config.commons.mjs",
+    "build:main": "astro build --config astro.config.main.mjs",
+    "build": "npm run build:commons && npm run build:main",
     "preview:commons": "astro preview --config astro.config.commons.mjs",
-    "check:commons": "astro check --config astro.config.commons.mjs"
+    "preview:main": "astro preview --config astro.config.main.mjs",
+    "check:commons": "astro check --config astro.config.commons.mjs",
+    "check:main": "astro check --config astro.config.main.mjs"
   },
   "dependencies": {
     "astro": "^5.0.0"

@@ -1,0 +1,43 @@
+---
+import Default from '../layouts/Default.astro';
+
+const title = 'Press | TARIDE Foundation';
+const description = 'Boilerplate, founder bios, and contact details for journalists and partners.';
+---
+
+<Default title={title} description={description} pageId="press">
+  <div class="container-reading">
+
+    <span class="page-eyebrow">For journalists and partners</span>
+    <h1 class="page-title">Press</h1>
+    <p class="page-lede">
+      Use the language below directly. No prior approval required, but a note to <a href="mailto:info@taride.org">info@taride.org</a> when a piece is published is appreciated.
+    </p>
+
+    <h2>One line</h2>
+    <div class="callout">
+      <p>TARIDE develops an open European protocol for digital trust: pseudonymity by default, identification by choice.</p>
+    </div>
+
+    <h2>One paragraph</h2>
+    <div class="callout">
+      <p>TARIDE is a Dutch non-profit foundation developing an open European protocol for digital trust. The protocol provides verification of credentials and authenticity without disclosing identifying information about the parties involved. It targets institutional use (telecom providers, regulators, registries) and is designed to interoperate with eIDAS 2.0 and the European Digital Identity Wallet. All specifications, threat models, and supporting documents are public and licensed CC BY 4.0.</p>
+    </div>
+
+    <h2>Board</h2>
+    <p>Martin Voorzanger (Chairperson) and Leonard Wolters (Secretary). One seat is currently open. Full bios on the <a href="/governance/">governance page</a>.</p>
+
+    <h2>Logos</h2>
+    <p>The TARIDE wordmark is available in monochrome and blue, on light and dark backgrounds. The bracket motif may be used in isolation.</p>
+    <ul>
+      <li><a href="/assets/taride-logo-blue.svg">Wordmark, blue on light</a></li>
+      <li><a href="/assets/taride-logo-mono.svg">Wordmark, monochrome</a></li>
+      <li><a href="/assets/taride-logo-onDark.svg">Wordmark, on dark</a></li>
+      <li><a href="/assets/bracket-frame.svg">Bracket motif</a></li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>Press enquiries: <a href="mailto:info@taride.org">info@taride.org</a>. The foundation responds within five working days.</p>
+
+  </div>
+</Default>

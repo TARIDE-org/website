@@ -1,0 +1,70 @@
+---
+import Default from '../../layouts/Default.astro';
+
+const title = 'Specifications | TARIDE Foundation';
+const description = 'The TARIDE foundation document and four supporting briefs: telecom, threat model, privacy analysis, technical summary.';
+
+const docs = [
+  {
+    title: 'Foundation document',
+    blurb: 'The protocol overview, design constraints, and intended scope.',
+    source: 'https://github.com/TARIDE-org/docs/blob/main/taride_foundation.md',
+  },
+  {
+    title: 'Telecom brief',
+    blurb: 'Integration with telecom providers and credential lifecycle.',
+    source: 'https://github.com/TARIDE-org/docs/blob/main/briefs/telecom_brief.md',
+  },
+  {
+    title: 'Threat model',
+    blurb: 'Security threats considered and attack taxonomy.',
+    source: 'https://github.com/TARIDE-org/docs/blob/main/briefs/threat_model.md',
+  },
+  {
+    title: 'Privacy analysis',
+    blurb: 'GDPR considerations and identifier handling.',
+    source: 'https://github.com/TARIDE-org/docs/blob/main/briefs/privacy_analysis.md',
+  },
+  {
+    title: 'Technical summary',
+    blurb: 'DID methods, credential formats, resolver architecture.',
+    source: 'https://github.com/TARIDE-org/docs/blob/main/briefs/technical_summary.md',
+  },
+];
+
+const docVersion = 'v0.51';
+const lastUpdated = '19 May 2026';
+---
+
+<Default title={title} description={description} pageId="docs">
+  <div class="container-reading">
+
+    <span class="page-eyebrow">TARIDE Foundation</span>
+    <h1 class="page-title">Specifications</h1>
+    <p class="page-lede">
+      The foundation document and the four supporting briefs that develop it. All are work in progress and open to targeted review.
+    </p>
+
+    <div class="callout">
+      <p>While the on-site rendering pipeline is being completed, each document below links to its source on GitHub. The rendered versions, alongside downloadable PDFs, will appear at these same URLs.</p>
+    </div>
+
+    <nav class="routes" aria-label="Specification documents">
+      {docs.map((doc, i) => (
+        <a class="route" href={doc.source} rel="noopener">
+          <span class="num">§ {String(i + 1).padStart(2, '0')}</span>
+          <div class="body">
+            <h2>{doc.title}</h2>
+            <p>{doc.blurb}</p>
+          </div>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </nav>
+
+    <p class="status">
+      Foundation document {docVersion}. Last updated {lastUpdated}.
+    </p>
+
+  </div>
+</Default>
