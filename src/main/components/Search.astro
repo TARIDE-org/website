@@ -18,6 +18,24 @@
     });
   }
 
+  // Report search terms to Umami (aggregate only): one event per query,
+  // 1s after typing stops, minimum 3 characters, de-duplicated.
+  function trackQueries(el) {
+    const input = el.querySelector('input');
+    if (!input) return;
+    let timer;
+    let last = '';
+    input.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        const q = input.value.trim();
+        if (q.length < 3 || q === last) return;
+        last = q;
+        if (window.umami) window.umami.track('docs-search', { query: q });
+      }, 1000);
+    });
+  }
+
   async function init() {
     const el = document.getElementById('docs-search');
     if (!el) return;
@@ -30,6 +48,7 @@
         resetStyles: false,
         translations: { placeholder: 'Search the specifications' },
       });
+      trackQueries(el);
     } catch {
       el.hidden = true;
     }
