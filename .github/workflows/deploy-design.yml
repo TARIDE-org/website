@@ -1,0 +1,59 @@
+name: Deploy Design System
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Daily, to pick up changes pushed to the design-system repo.
+    - cron: '0 6 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'deploy/gen-design-index.py'
+      - '.github/workflows/deploy-design.yml'
+
+concurrency:
+  group: deploy-design
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+    env:
+      DEPLOY_ROOT: /srv/taride/design
+      KEEP_RELEASES: 5
+
+    steps:
+      - name: Checkout website repo (for the generator)
+        uses: actions/checkout@v4
+
+      - name: Clone design-system (canonical source)
+        run: |
+          rm -rf _design-system
+          git clone --depth 1 https://github.com/TARIDE-org/design-system.git _design-system
+
+      - name: Generate contents index
+        run: python3 deploy/gen-design-index.py _design-system
+
+      - name: Atomic swap
+        run: |
+          set -euo pipefail
+          STAMP=$(date -u +%Y%m%d-%H%M%SZ)
+          NEW="${DEPLOY_ROOT}/releases/${STAMP}"
+          mkdir -p "${NEW}"
+          rsync -a --delete --exclude='.git' _design-system/ "${NEW}/"
+          ln -sfn "releases/${STAMP}" "${DEPLOY_ROOT}/current.new"
+          mv -Tf "${DEPLOY_ROOT}/current.new" "${DEPLOY_ROOT}/current"
+          ls -1t "${DEPLOY_ROOT}/releases" | tail -n +$((KEEP_RELEASES + 1)) | while read -r old; do
+            rm -rf "${DEPLOY_ROOT}/releases/${old}"
+          done
+          echo "deployed: ${STAMP}"
+
+      - name: Smoke test (HEAD /)
+        run: |
+          for i in 1 2 3 4 5; do
+            code=$(curl -ksSo /dev/null -w "%{http_code}" -H "Host: design.taride.org" http://127.0.0.1/ ) || code=000
+            echo "attempt ${i}: ${code}"
+            case "${code}" in 200|301|302) exit 0 ;; esac
+            sleep 1
+          done
+          exit 1
