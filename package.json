@@ -10,7 +10,7 @@
     "dev:main": "astro dev --config astro.config.main.mjs",
     "build:commons": "astro build --config astro.config.commons.mjs",
     "pull-docs": "node scripts/pull-docs.mjs",
-    "build:main": "node scripts/pull-docs.mjs && astro build --config astro.config.main.mjs",
+    "build:main": "node scripts/pull-docs.mjs && astro build --config astro.config.main.mjs && pagefind --site dist/main",
     "build": "npm run build:commons && npm run build:main",
     "preview:commons": "astro preview --config astro.config.commons.mjs",
     "preview:main": "astro preview --config astro.config.main.mjs",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
     "@astrojs/sitemap": "^3.7.2",
+    "pagefind": "^1.5.2",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "typescript": "^5.6.0"

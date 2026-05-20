@@ -314,6 +314,20 @@ section h2 {
 .docs-toc a:hover { color: var(--accent); }
 .docs-toc .depth-2 { padding-left: var(--sp-4); }
 
+/* Search (Pagefind UI, themed to the design system) */
+.docs-search {
+  --pagefind-ui-scale: 0.8;
+  --pagefind-ui-primary: var(--accent);
+  --pagefind-ui-text: var(--fg);
+  --pagefind-ui-background: var(--bg);
+  --pagefind-ui-border: var(--border);
+  --pagefind-ui-tag: var(--bg-raised);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: var(--radius-xs);
+  --pagefind-ui-font: var(--font-body);
+  margin-bottom: var(--sp-5);
+}
+
 /* Doc header */
 .doc-header { margin-bottom: var(--sp-6); }
 .doc-header .doc-title {

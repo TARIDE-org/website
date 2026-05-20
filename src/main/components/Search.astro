@@ -1,0 +1,50 @@
+---
+// Pagefind search over the spec docs. The Pagefind index is generated at
+// build time (after astro build) into /pagefind/. This component loads the
+// Pagefind UI from there at runtime. All assets are same-origin, so the
+// script works under the site's strict CSP (which also allows
+// wasm-unsafe-eval for the Pagefind search engine).
+---
+<div id="docs-search" class="docs-search"></div>
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+<script>
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error('failed to load ' + src));
+      document.head.appendChild(s);
+    });
+  }
+
+  async function init() {
+    const el = document.getElementById('docs-search');
+    if (!el) return;
+    try {
+      await loadScript('/pagefind/pagefind-ui.js');
+      new window.PagefindUI({
+        element: '#docs-search',
+        showImages: false,
+        showSubResults: true,
+        resetStyles: false,
+        translations: { placeholder: 'Search the specifications' },
+      });
+    } catch {
+      el.hidden = true;
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== '/') return;
+    const a = document.activeElement;
+    if (a && /^(input|textarea)$/i.test(a.tagName)) return;
+    const input = document.querySelector('#docs-search input');
+    if (input) {
+      e.preventDefault();
+      input.focus();
+    }
+  });
+
+  init();
+</script>

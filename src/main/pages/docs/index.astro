@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Default from '../../layouts/Default.astro';
+import Search from '../../components/Search.astro';
 
 const docs = (await getCollection('docs')).sort((a, b) => a.data.order - b.data.order);
 
@@ -27,6 +28,8 @@ const description = 'The TARIDE foundation document and four supporting briefs: 
     <p class="page-lede">
       The foundation document and the four supporting briefs that develop it. All are work in progress and open to targeted review.
     </p>
+
+    <Search />
 
     <nav class="routes" aria-label="Specification documents">
       {docs.map((d, i) => (
