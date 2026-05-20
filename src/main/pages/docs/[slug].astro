@@ -21,10 +21,10 @@ const description = `TARIDE ${doc.data.title}, ${doc.data.version}. Part of the 
 
 <Default title={title} description={description} pageId="docs">
   <div class="container">
+    <Search />
     <div class="docs-grid">
 
       <nav class="docs-rail" aria-label="Specifications">
-        <Search />
         <p class="rail-label">Specifications</p>
         <ol>
           {docs.map((d) => (

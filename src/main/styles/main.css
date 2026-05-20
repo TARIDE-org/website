@@ -325,7 +325,8 @@ section h2 {
   --pagefind-ui-border-width: 1px;
   --pagefind-ui-border-radius: var(--radius-xs);
   --pagefind-ui-font: var(--font-body);
-  margin-bottom: var(--sp-5);
+  max-width: 460px;
+  margin-bottom: var(--sp-6);
 }
 
 /* Doc header */
