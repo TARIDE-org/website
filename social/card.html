@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('file:///Users/birdman/Documents/GitHub/taride-website/public/fonts/IBMPlexSans-VF.woff2') format('woff2-variations');
+    font-weight: 100 700; font-style: normal;
+  }
+  @font-face {
+    font-family: 'IBM Plex Serif';
+    src: url('file:///Users/birdman/Documents/GitHub/taride-website/public/fonts/IBMPlexSerif-VF.woff2') format('woff2-variations');
+    font-weight: 100 700; font-style: normal;
+  }
+  @font-face {
+    font-family: 'IBM Plex Mono';
+    src: url('file:///Users/birdman/Documents/GitHub/taride-website/public/fonts/IBMPlexMono-Regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal;
+  }
+  @font-face {
+    font-family: 'IBM Plex Mono';
+    src: url('file:///Users/birdman/Documents/GitHub/taride-website/public/fonts/IBMPlexMono-Medium.woff2') format('woff2');
+    font-weight: 500; font-style: normal;
+  }
+
+  :root {
+    --ink-100: #10100B;
+    --ink-70:  #3D3A33;
+    --stone-500: #8A847A;
+    --rule: #D8D2C3;
+    --paper-100: #F7F4ED;
+    --paper-200: #EFEBE0;
+    --accent: #0A55C7;
+    --logo-blue: #0077DA;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper-100);
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: var(--ink-100);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .card {
+    position: relative;
+    width: var(--w);
+    height: var(--h);
+    background: var(--paper-100);
+    padding: var(--pad);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  /* faint bracket motif, top-right */
+  .frame {
+    position: absolute;
+    top: var(--pad);
+    right: var(--pad);
+    width: 120px;
+    color: var(--rule);
+    opacity: 0.9;
+  }
+
+  .top {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: var(--fs-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+  }
+  .eyebrow .sep { color: var(--stone-500); margin: 0 8px; }
+
+  .mid { max-width: var(--mid-w); }
+  .headline {
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 400;
+    font-size: var(--fs-head);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    color: var(--ink-100);
+    margin-bottom: var(--head-gap);
+  }
+  .sub {
+    font-size: var(--fs-sub);
+    line-height: 1.45;
+    color: var(--ink-70);
+    max-width: var(--sub-w);
+  }
+
+  .bottom { display: flex; flex-direction: column; gap: var(--bottom-gap); }
+  .orgs {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: var(--fs-orgs);
+    line-height: 1.7;
+    color: var(--stone-500);
+    letter-spacing: 0.01em;
+    padding-top: var(--orgs-pad);
+    border-top: 1px solid var(--rule);
+  }
+  .orgs .dot { color: var(--rule); margin: 0 7px; }
+
+  .footer { display: flex; align-items: center; justify-content: space-between; }
+  .url {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: var(--fs-url);
+    color: var(--ink-100);
+  }
+  .logo { height: var(--logo-h); }
+
+  /* ---- landscape 1200x630 ---- */
+  .landscape {
+    --w: 1200px; --h: 630px; --pad: 64px;
+    --fs-eyebrow: 16px; --fs-head: 60px; --fs-sub: 24px;
+    --fs-orgs: 16px; --fs-url: 22px;
+    --mid-w: 980px; --sub-w: 760px;
+    --head-gap: 24px; --bottom-gap: 28px;
+    --orgs-pad: 22px; --logo-h: 38px;
+  }
+  /* ---- square 1080x1080 ---- */
+  .square {
+    --w: 1080px; --h: 1080px; --pad: 80px;
+    --fs-eyebrow: 18px; --fs-head: 72px; --fs-sub: 28px;
+    --fs-orgs: 19px; --fs-url: 26px;
+    --mid-w: 920px; --sub-w: 820px;
+    --head-gap: 32px; --bottom-gap: 36px;
+    --orgs-pad: 28px; --logo-h: 44px;
+  }
+  .square .frame { width: 150px; }
+</style>
+</head>
+<body>
+  <div class="card CLASS">
+    <svg class="frame" viewBox="0 0 354.52 202.16" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(0,-100.8)">
+        <path fill="currentColor" d="M348.53,107.32h-18.2v-6.52h24.19v97.19h-24.19v-5.87h18.2v-84.8Z"></path>
+        <path fill="currentColor" d="M5.99,191.31h18.2v6.52H0v-97.19h24.19v5.87H5.99v84.8Z"></path>
+      </g>
+    </svg>
+
+    <div class="top">
+      <span class="eyebrow">Commons<span class="sep">/</span>Hosted by Taride</span>
+    </div>
+
+    <div class="mid">
+      <h1 class="headline">Most of the open web runs on donations.</h1>
+      <p class="sub">A curated guide to European non-profits keeping our digital infrastructure independent, open, and trustworthy. You donate directly. No platform in the middle.</p>
+    </div>
+
+    <div class="bottom">
+      <div class="orgs">
+        noyb<span class="dot">·</span>Codeberg<span class="dot">·</span>NLnet<span class="dot">·</span>Matrix.org<span class="dot">·</span>LibreOffice<span class="dot">·</span>Wikimedia<span class="dot">·</span>Correctiv<span class="dot">·</span>EDRi<span class="dot">·</span>La Quadrature du Net<span class="dot">·</span>LAION
+      </div>
+      <div class="footer">
+        <span class="url">commons.taride.org</span>
+        <svg class="logo" viewBox="0 0 354.52 302.96" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#0077DA" d="M348.53,107.32h-18.2v-6.52h24.19v97.19h-24.19v-5.87h18.2v-84.8Z"></path>
+          <path fill="#10100B" d="M52.5,133.61h-13.64v-8.06h35.77v8.06h-13.64v41.43h-8.48v-41.43Z"></path>
+          <path fill="#10100B" d="M100.9,125.55h8.62l19.23,49.48h-8.55l-4.52-11.73h-20.93l-4.52,11.73h-8.55l19.23-49.48ZM97.79,155.53h14.85l-7.42-19.3-7.42,19.3Z"></path>
+          <path fill="#10100B" d="M142.65,125.55h16.26c9.83,0,16.4,6.36,16.4,15.41,0,7.42-3.96,13.08-11.03,14.84l12.37,19.23h-9.9l-11.73-18.66h-3.89v18.66h-8.48v-49.48ZM166.68,140.96c0-4.88-3.39-7.35-8.84-7.35h-6.72v14.7h6.72c5.44,0,8.84-2.47,8.84-7.35Z"></path>
+          <path fill="#10100B" d="M196.04,125.55h8.48v49.48h-8.48v-49.48Z"></path>
+          <path fill="#10100B" d="M267.6,150.3c0,14.28-10.04,24.74-24.46,24.74h-15.97v-49.48h15.97c14.42,0,24.46,10.46,24.46,24.74ZM258.97,150.3c0-9.05-6.08-16.68-15.69-16.68h-7.64v33.37h7.64c9.61,0,15.69-7.71,15.69-16.68Z"></path>
+          <path fill="#10100B" d="M291.96,145.63h19.79v8.06h-19.79v13.29h21.91v8.06h-30.4v-49.48h29.97v8.06h-21.49v12.02Z"></path>
+          <path fill="#0077DA" d="M5.99,191.31h18.2v6.52H0v-97.19h24.19v5.87H5.99v84.8Z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

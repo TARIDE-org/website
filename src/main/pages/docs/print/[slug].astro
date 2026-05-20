@@ -1,0 +1,33 @@
+---
+// Minimal print-only render of each spec doc, consumed by weasyprint to
+// produce /docs/<slug>.pdf at build time. These pages are not deployed:
+// build-pdfs.mjs removes dist/main/docs/print after generating the PDFs, and
+// the sitemap filter excludes them.
+import { getCollection, render } from 'astro:content';
+import '../../../../shared/styles/tokens.css';
+import '../../../styles/print.css';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  return docs.map((doc) => ({ params: { slug: doc.id }, props: { doc } }));
+}
+
+const { doc } = Astro.props;
+const { Content } = await render(doc);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{doc.data.title}, TARIDE {doc.data.version}</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <article class="doc">
+      <p class="eyebrow">TARIDE specification · {doc.data.version} · updated {doc.data.lastUpdated}</p>
+      <h1>{doc.data.title}</h1>
+      <Content />
+    </article>
+  </body>
+</html>

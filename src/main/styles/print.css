@@ -1,0 +1,127 @@
+/* Print stylesheet for the doc PDFs (rendered by weasyprint).
+   Inherits font tokens from tokens.css; everything else is print-specific. */
+
+@page {
+  size: A4;
+  margin: 22mm 18mm 20mm;
+  @bottom-left {
+    content: "TARIDE";
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8pt;
+    letter-spacing: 0.12em;
+    color: #8A847A;
+  }
+  @bottom-right {
+    content: counter(page) " / " counter(pages);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8pt;
+    color: #8A847A;
+  }
+}
+
+html, body {
+  background: #FFFFFF;
+  color: #10100B;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+.doc { max-width: none; }
+
+.doc .eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #5A5650;
+  margin: 0 0 6pt;
+}
+.doc > h1 {
+  font-family: 'IBM Plex Serif', serif;
+  font-weight: 400;
+  font-size: 24pt;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 0 0 18pt;
+}
+
+/* Rendered markdown */
+.doc h1 {
+  font-family: 'IBM Plex Serif', serif;
+  font-weight: 400;
+  font-size: 16pt;
+  line-height: 1.2;
+  margin: 20pt 0 8pt;
+  padding-top: 10pt;
+  border-top: 0.5pt solid #D8D2C3;
+  break-after: avoid;
+}
+.doc h2 {
+  font-size: 13pt;
+  font-weight: 600;
+  margin: 14pt 0 6pt;
+  break-after: avoid;
+}
+.doc h3 {
+  font-size: 11pt;
+  font-weight: 600;
+  margin: 12pt 0 4pt;
+  break-after: avoid;
+}
+.doc p { margin: 0 0 8pt; }
+.doc ul, .doc ol { margin: 0 0 8pt; padding-left: 16pt; }
+.doc li { margin: 0 0 3pt; }
+.doc a { color: #0A55C7; text-decoration: none; }
+.doc blockquote {
+  margin: 10pt 0;
+  padding: 2pt 12pt;
+  border-left: 2pt solid #0A55C7;
+  color: #3D3A33;
+}
+.doc pre {
+  background: #EFEBE0;
+  padding: 8pt 10pt;
+  border-left: 2pt solid #0A55C7;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5pt;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  break-inside: avoid;
+}
+.doc :not(pre) > code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9em;
+  background: #EFEBE0;
+  padding: 0.1em 0.3em;
+}
+.doc img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 12pt auto;
+  border: 0.5pt solid #D8D2C3;
+  padding: 8pt;
+  break-inside: avoid;
+}
+.doc hr { border: 0; border-top: 0.5pt solid #D8D2C3; margin: 14pt 0; }
+.doc table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10pt 0;
+  font-size: 9pt;
+  break-inside: auto;
+}
+.doc th, .doc td {
+  text-align: left;
+  padding: 4pt 6pt;
+  border-bottom: 0.5pt solid #D8D2C3;
+  vertical-align: top;
+}
+.doc th { font-weight: 600; border-bottom-width: 1pt; }
+.doc tr { break-inside: avoid; }
+
+/* The autolink heading anchors are noise in print */
+.heading-anchor { display: none; }

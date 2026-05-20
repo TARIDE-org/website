@@ -44,6 +44,7 @@ const description = `TARIDE ${doc.data.title}, ${doc.data.version}. Part of the 
           <h1 class="doc-title" data-pagefind-meta="title">{doc.data.title}</h1>
           <p class="doc-meta" data-pagefind-ignore>
             {doc.data.version} · updated {doc.data.lastUpdated} ·
+            <a href={`/docs/${doc.id}.pdf`} data-umami-event="pdf-download" data-umami-event-doc={doc.id}>PDF</a> ·
             <a href={doc.data.source} rel="noopener" data-umami-event="outbound-click" data-umami-event-url={doc.data.source}>source on GitHub</a>
           </p>
         </div>
