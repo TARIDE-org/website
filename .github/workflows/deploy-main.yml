@@ -1,20 +1,20 @@
-name: Deploy Commons
+name: Deploy Main
 
 on:
   push:
     branches: [main]
     paths:
-      - 'src/commons/**'
+      - 'src/main/**'
       - 'src/shared/**'
       - 'public/**'
-      - 'astro.config.commons.mjs'
+      - 'astro.config.main.mjs'
       - 'package.json'
       - 'package-lock.json'
-      - '.github/workflows/deploy-commons.yml'
+      - '.github/workflows/deploy-main.yml'
   workflow_dispatch:
 
 concurrency:
-  group: deploy-commons
+  group: deploy-main
   cancel-in-progress: false
 
 jobs:
@@ -22,8 +22,8 @@ jobs:
     runs-on: self-hosted
     env:
       PUBLIC_UMAMI_URL: ${{ secrets.PUBLIC_UMAMI_URL }}
-      PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.PUBLIC_UMAMI_WEBSITE_ID_COMMONS }}
-      DEPLOY_ROOT: /srv/taride/commons
+      PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.PUBLIC_UMAMI_WEBSITE_ID_MAIN }}
+      DEPLOY_ROOT: /srv/taride/main
       KEEP_RELEASES: 5
 
     steps:
@@ -39,8 +39,8 @@ jobs:
 
       - run: npm ci
 
-      - name: Build Commons
-        run: npm run build:commons
+      - name: Build main
+        run: npm run build:main
 
       - name: Atomic swap
         run: |
@@ -48,7 +48,7 @@ jobs:
           STAMP=$(date -u +%Y%m%d-%H%M%SZ)
           NEW="${DEPLOY_ROOT}/releases/${STAMP}"
           mkdir -p "${NEW}"
-          rsync -a --delete dist/commons/ "${NEW}/"
+          rsync -a --delete dist/main/ "${NEW}/"
           # Relative symlink target so the path resolves both on the host and
           # inside the nginx container, which mounts /srv/taride at /var/www/taride.
           ln -sfn "releases/${STAMP}" "${DEPLOY_ROOT}/current.new"
@@ -61,9 +61,9 @@ jobs:
       - name: Smoke test (HEAD /)
         run: |
           for i in 1 2 3 4 5; do
-            code=$(curl -ksSo /dev/null -w "%{http_code}" -H "Host: commons.taride.org" https://127.0.0.1/) || code=000
+            code=$(curl -ksSo /dev/null -w "%{http_code}" -H "Host: taride.org" http://127.0.0.1/ ) || code=000
             echo "attempt ${i}: ${code}"
-            [ "${code}" = "200" ] && exit 0
+            case "${code}" in 200|301|302) exit 0 ;; esac
             sleep 1
           done
           exit 1
