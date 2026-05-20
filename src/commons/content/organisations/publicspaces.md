@@ -2,6 +2,7 @@
 name: PublicSpaces
 country: Netherlands
 theme: open-ai-and-digital-infrastructure
+fiscal_status: Dutch non-profit foundation
 url: https://publicspaces.net
 order: 3
 ---

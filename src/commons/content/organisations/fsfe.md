@@ -2,6 +2,7 @@
 name: FSFE (Free Software Foundation Europe)
 country: Germany
 theme: open-source-and-open-standards
+fiscal_status: German non-profit (e.V.)
 url: https://fsfe.org
 order: 2
 ---

@@ -2,6 +2,7 @@
 name: EDRi (European Digital Rights)
 country: Belgium
 theme: privacy-and-digital-rights
+fiscal_status: Belgian non-profit (AISBL)
 url: https://edri.org
 order: 2
 ---

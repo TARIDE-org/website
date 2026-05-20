@@ -2,6 +2,7 @@
 name: Investigate Europe
 country: Europe
 theme: independent-media
+fiscal_status: Non-profit cooperative
 url: https://investigate-europe.eu
 order: 2
 ---

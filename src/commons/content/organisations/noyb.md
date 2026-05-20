@@ -2,6 +2,7 @@
 name: noyb (European Centre for Digital Rights)
 country: Austria
 theme: privacy-and-digital-rights
+fiscal_status: Austrian non-profit
 url: https://noyb.eu
 order: 3
 ---

@@ -2,6 +2,7 @@
 name: Matrix.org Foundation
 country: United Kingdom
 theme: open-ai-and-digital-infrastructure
+fiscal_status: UK Community Interest Company (CIC)
 url: https://matrix.org
 order: 2
 ---
