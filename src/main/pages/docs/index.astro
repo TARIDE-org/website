@@ -51,7 +51,7 @@ const lastUpdated = '19 May 2026';
 
     <nav class="routes" aria-label="Specification documents">
       {docs.map((doc, i) => (
-        <a class="route" href={doc.source} rel="noopener">
+        <a class="route" href={doc.source} rel="noopener" data-umami-event="outbound-click" data-umami-event-url={doc.source}>
           <span class="num">§ {String(i + 1).padStart(2, '0')}</span>
           <div class="body">
             <h2>{doc.title}</h2>
