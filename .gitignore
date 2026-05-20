@@ -2,6 +2,10 @@
 dist/
 .astro/
 
+# spec docs pulled from TARIDE-org/docs at build time (not vendored)
+src/main/content/docs/
+public/docs/images/
+
 # dependencies
 node_modules/
 

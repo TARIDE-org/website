@@ -1,0 +1,78 @@
+---
+import { getCollection, render } from 'astro:content';
+import Default from '../../layouts/Default.astro';
+
+export async function getStaticPaths() {
+  const docs = (await getCollection('docs')).sort((a, b) => a.data.order - b.data.order);
+  return docs.map((doc, i) => ({
+    params: { slug: doc.id },
+    props: { doc, docs, prev: docs[i - 1] ?? null, next: docs[i + 1] ?? null },
+  }));
+}
+
+const { doc, docs, prev, next } = Astro.props;
+const { Content, headings } = await render(doc);
+const toc = headings.filter((h) => h.depth >= 1 && h.depth <= 2);
+
+const title = `${doc.data.title} | TARIDE`;
+const description = `TARIDE ${doc.data.title}, ${doc.data.version}. Part of the open European protocol for digital trust.`;
+---
+
+<Default title={title} description={description} pageId="docs">
+  <div class="container">
+    <div class="docs-grid">
+
+      <nav class="docs-rail" aria-label="Specifications">
+        <p class="rail-label">Specifications</p>
+        <ol>
+          {docs.map((d) => (
+            <li>
+              <a href={`/docs/${d.id}/`} aria-current={d.id === doc.id ? 'page' : undefined}>
+                <span class="num">{String(d.data.order).padStart(2, '0')}</span>
+                <span>{d.data.title}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <article class="prose">
+        <div class="doc-header">
+          <span class="page-eyebrow">TARIDE specification</span>
+          <h1 class="doc-title">{doc.data.title}</h1>
+          <p class="doc-meta">
+            {doc.data.version} · updated {doc.data.lastUpdated} ·
+            <a href={doc.data.source} rel="noopener" data-umami-event="outbound-click" data-umami-event-url={doc.data.source}>source on GitHub</a>
+          </p>
+        </div>
+
+        <Content />
+
+        <nav class="doc-nav">
+          {prev ? (
+            <a class="prev" href={`/docs/${prev.id}/`}>
+              <span class="dir">Previous</span>
+              {prev.data.title}
+            </a>
+          ) : <span></span>}
+          {next && (
+            <a class="next" href={`/docs/${next.id}/`}>
+              <span class="dir">Next</span>
+              {next.data.title}
+            </a>
+          )}
+        </nav>
+      </article>
+
+      <nav class="docs-toc" aria-label="On this page">
+        <p class="rail-label">On this page</p>
+        <ol>
+          {toc.map((h) => (
+            <li class={`depth-${h.depth}`}><a href={`#${h.slug}`}>{h.text}</a></li>
+          ))}
+        </ol>
+      </nav>
+
+    </div>
+  </div>
+</Default>
