@@ -1,3 +1,5 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/* SPDX-FileCopyrightText: 2026 Stichting TARIDE (TARIDE Foundation) */
 /* Print stylesheet for the doc PDFs (rendered by weasyprint).
    Inherits font tokens from tokens.css; everything else is print-specific. */
 

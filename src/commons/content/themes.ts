@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Stichting TARIDE (TARIDE Foundation)
 export const themes = [
   { key: 'privacy-and-digital-rights',        title: 'Privacy and digital rights' },
   { key: 'open-source-and-open-standards',    title: 'Open source and open standards' },

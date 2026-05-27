@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Stichting TARIDE (TARIDE Foundation)
 // Docs search: loads the Pagefind UI and reports settled queries to Umami.
 // Served as an external 'self' script so it runs under the strict CSP
 // (script-src 'self' 'wasm-unsafe-eval' https://umami.taride.org) without

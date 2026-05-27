@@ -1,0 +1,35 @@
+TARIDE website
+Copyright 2026 Stichting TARIDE (TARIDE Foundation)
+
+This product includes software developed by Stichting TARIDE
+(https://taride.org).
+
+Licensing summary
+-----------------
+
+Source code in this repository is licensed under the Apache License,
+Version 2.0; see LICENSE for the full text. Editorial content (Markdown
+documents, page copy, diagrams) is licensed under the Creative Commons
+Attribution 4.0 International licence; see LICENSES/CC-BY-4.0.txt. The
+IBM Plex font files under public/fonts/ are licensed under the SIL Open
+Font License, Version 1.1; see LICENSES/OFL-1.1.txt and
+public/fonts/LICENSE.txt.
+
+Per-file licensing follows the REUSE specification (https://reuse.software);
+see REUSE.toml and the SPDX-License-Identifier headers in source files.
+
+Trademarks
+----------
+
+The name "TARIDE", the TARIDE wordmark, and the bracket motif are
+trademarks of Stichting TARIDE. Neither the Apache-2.0 grant on the
+source code (see Section 6 of the Apache-2.0 licence) nor the CC BY 4.0
+grant on the content conveys any right to use these marks. Use that
+suggests endorsement by Stichting TARIDE requires written permission.
+
+Third-party components
+----------------------
+
+This project incorporates work from third-party open-source projects.
+A summary of those components, their licences, and upstream sources is
+in THIRD_PARTY_NOTICES.md.

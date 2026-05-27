@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Stichting TARIDE (TARIDE Foundation)
 import type { APIRoute } from 'astro';
 
 const body = `# Commons curates non-profits keeping European digital infrastructure

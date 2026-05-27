@@ -1,0 +1,65 @@
+version = 1
+
+# Code under Apache-2.0; editorial content under CC-BY-4.0; fonts under OFL-1.1.
+# Files that can carry an SPDX header do so; the entries below cover paths
+# where headers are impractical (JSON, binary assets, bulk content trees).
+
+[[annotations]]
+path = [
+  "package.json",
+  "package-lock.json",
+  "tsconfig.json",
+  ".gitignore",
+  ".env.example",
+  "NOTICE",
+  "THIRD_PARTY_NOTICES.md",
+  "REUSE.toml",
+  "deploy/compose-patch.md",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Stichting TARIDE (TARIDE Foundation)"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "src/commons/content/organisations/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Stichting TARIDE (TARIDE Foundation)"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Spec docs pulled from TARIDE-org/docs at build time. Gitignored, so this
+# annotation only takes effect after `npm run pull-docs` has populated the
+# tree locally.
+[[annotations]]
+path = "src/main/content/docs/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Stichting TARIDE (TARIDE Foundation)"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Site assets: logos and visual marks. Trademark rights are reserved
+# separately; see NOTICE.
+[[annotations]]
+path = "public/assets/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Stichting TARIDE (TARIDE Foundation)"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Generated doc diagrams (also gitignored; populated by pull-docs).
+[[annotations]]
+path = "public/docs/images/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Stichting TARIDE (TARIDE Foundation)"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Social cards rendered from social/card.html.
+[[annotations]]
+path = "social/*.png"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Stichting TARIDE (TARIDE Foundation)"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# IBM Plex font files shipped at /fonts.
+[[annotations]]
+path = ["public/fonts/*.woff2", "public/fonts/LICENSE.txt"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2017 IBM Corp."
+SPDX-License-Identifier = "OFL-1.1"

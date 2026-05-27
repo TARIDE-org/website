@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2026 Stichting TARIDE (TARIDE Foundation)
+#
 # Reproducible weasyprint image for generating the doc PDFs at deploy time.
 # Built once on the runner and cached; avoids installing weasyprint's system
 # libraries (Pango, Cairo, etc.) on the shared host.

@@ -1,0 +1,57 @@
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2026 Stichting TARIDE (TARIDE Foundation)
+name: Licence checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: licence-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reuse:
+    name: REUSE 3.3 compliance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install reuse
+        run: pip install --user 'reuse>=5,<6'
+      - name: reuse lint
+        run: reuse lint
+
+  npm-licences:
+    name: npm dependency licences
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+
+      # CLAUDE.md disallows GPL/LGPL/AGPL/SSPL/BUSL without approval.
+      # The @img/sharp-libvips-* binaries are LGPL-3.0-or-later and are
+      # excluded here because they are dynamically linked optional
+      # dependencies of `sharp`, the build-time image processor that
+      # Astro pulls in. This project does not use Astro image features
+      # and never invokes libvips at build time; libvips is not
+      # redistributed in the built site output. See THIRD_PARTY_NOTICES.md.
+      # license-checker-rseidelsohn is the actively maintained fork of the
+      # original license-checker (which has not been updated since 2018 and
+      # lacks --excludePackagesStartingWith).
+      - name: License scan (production dependencies)
+        run: |
+          npx --yes license-checker-rseidelsohn \
+            --production \
+            --summary \
+            --excludePackagesStartingWith '@img/sharp-libvips-' \
+            --failOn 'GPL-2.0;GPL-3.0;LGPL-2.0;LGPL-2.1;LGPL-3.0;LGPL-3.0-or-later;AGPL-1.0;AGPL-3.0;SSPL-1.0;BUSL-1.1'

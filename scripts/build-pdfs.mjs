@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Stichting TARIDE (TARIDE Foundation)
 // Generate a PDF per spec doc from the build-only print routes, using
 // weasyprint in a container. Skips gracefully where docker is unavailable
 // (e.g. local dev); runs on the self-hosted runner.

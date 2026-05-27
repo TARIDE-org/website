@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Stichting TARIDE (TARIDE Foundation)
 import type { APIRoute } from 'astro';
 
 const body = `# TARIDE develops an open European protocol for digital trust. The

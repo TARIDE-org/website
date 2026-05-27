@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Stichting TARIDE (TARIDE Foundation)
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 

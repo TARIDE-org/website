@@ -2,8 +2,14 @@
   "name": "taride-website",
   "type": "module",
   "version": "0.1.0",
-  "private": true,
   "description": "TARIDE Foundation website. One Astro project, two outputs: taride.org and commons.taride.org.",
+  "license": "Apache-2.0",
+  "author": "Stichting TARIDE (TARIDE Foundation)",
+  "homepage": "https://taride.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TARIDE-org/website.git"
+  },
   "scripts": {
     "dev": "astro dev --config astro.config.main.mjs",
     "dev:commons": "astro dev --config astro.config.commons.mjs",

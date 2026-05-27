@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2026 Stichting TARIDE (TARIDE Foundation)
 // Pull the TARIDE spec documents from TARIDE-org/docs into the main site's
 // content collection. Run before `astro build` (CI and local). Prose is kept
 // verbatim; the script only injects render frontmatter and rewrites relative
