@@ -43,7 +43,12 @@
         showImages: false,
         showSubResults: true,
         resetStyles: false,
-        translations: { placeholder: 'Search the specifications' },
+        translations: {
+          placeholder: 'Search the specifications',
+          zero_results: 'No matches for [SEARCH_TERM]',
+          one_result: '1 document matches [SEARCH_TERM]',
+          many_results: '[COUNT] documents match [SEARCH_TERM]',
+        },
       });
       trackQueries(el);
     } catch (e) {

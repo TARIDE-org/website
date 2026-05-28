@@ -277,9 +277,11 @@ section h2 {
   position: sticky;
   top: calc(var(--sp-8) + var(--sp-2));
   font-size: var(--fs-small);
+  max-height: calc(100vh - var(--sp-8) - var(--sp-5));
+  overflow-y: auto;
 }
 @media (max-width: 760px) {
-  .docs-rail, .docs-toc { position: static; }
+  .docs-rail, .docs-toc { position: static; max-height: none; overflow: visible; }
 }
 .rail-label {
   font-family: var(--font-mono);
@@ -328,7 +330,13 @@ section h2 {
   --pagefind-ui-border-radius: var(--radius-xs);
   --pagefind-ui-font: var(--font-body);
   max-width: 460px;
+  margin-top: var(--sp-5);
   margin-bottom: var(--sp-6);
+}
+.docs-search .pagefind-ui__search-clear {
+  display: flex;
+  align-items: center;
+  padding-block: 0;
 }
 
 /* Doc header */
@@ -402,6 +410,7 @@ section h2 {
   opacity: 0;
   font-weight: 400;
 }
+.heading-anchor::after { content: '#'; }
 .prose h1:hover .heading-anchor,
 .prose h2:hover .heading-anchor,
 .prose h3:hover .heading-anchor,

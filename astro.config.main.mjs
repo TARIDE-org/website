@@ -28,7 +28,10 @@ export default defineConfig({
         {
           behavior: 'append',
           properties: { class: 'heading-anchor', ariaHidden: 'true', tabIndex: -1 },
-          content: { type: 'text', value: '#' },
+          // No text content: the visible `#` is rendered via a CSS ::after
+          // on .heading-anchor, so it does not appear in Astro's headings.text
+          // (which would otherwise leak into the TOC).
+          content: () => [],
         },
       ],
     ],
