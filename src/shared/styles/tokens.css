@@ -65,6 +65,7 @@
   --ink-80:    #2A2823;
   --ink-70:    #3D3A33;
   --ink-50:    #5A5650;
+  --stone-700: #6F695F;
   --stone-500: #8A847A;
   --stone-300: #BFB8AC;
   --rule:      #D8D2C3;
@@ -80,14 +81,14 @@
   --signal-yellow-tint: #F9EDC8;
 
   --signal-success: #2D7A5A;
-  --signal-warning: #9C6612;
+  --signal-warning: #94600F;
   --signal-error:   #B43A3A;
   --signal-error-tint: #F6E1DE;
 
   /* Color · semantic */
   --fg:           var(--ink-100);
   --fg-soft:      var(--ink-70);
-  --fg-muted:     var(--stone-500);
+  --fg-muted:     var(--stone-700);
   --bg:           var(--paper-100);
   --bg-raised:    var(--paper-200);
   --bg-overlay:   var(--paper-0);
