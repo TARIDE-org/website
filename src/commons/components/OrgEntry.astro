@@ -29,6 +29,6 @@ const displayUrl = url.replace(/^https?:\/\//, '').replace(/\/$/, '');
     data-umami-event="outbound-click"
     data-umami-event-org={name}
   >
-    {displayUrl}
+    {displayUrl}<span class="visually-hidden"> (opens in new tab)</span><span class="external-icon" aria-hidden="true"> ↗</span>
   </a>
 </article>

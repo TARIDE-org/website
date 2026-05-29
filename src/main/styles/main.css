@@ -4,16 +4,23 @@
 
 .skip-link {
   position: absolute;
-  left: -9999px;
-  top: 0;
+  top: calc(-1 * var(--sp-8));
+  left: var(--sp-4);
   background: var(--accent);
   color: var(--accent-fg);
   padding: var(--sp-2) var(--sp-4);
   z-index: 100;
+  transition: top var(--motion-fast);
 }
 .skip-link:focus {
-  left: var(--sp-4);
   top: var(--sp-4);
+}
+
+/* WCAG 2.4.11 (Focus Not Obscured): when focus moves to an element that
+   the browser scrolls into view, leave clearance above the sticky header
+   so the focus ring isn't hidden behind it. */
+:focus-visible {
+  scroll-margin-top: calc(var(--sp-8) + var(--sp-2));
 }
 
 .container {
@@ -71,6 +78,9 @@
   letter-spacing: var(--tr-eyebrow);
   color: var(--fg-soft);
   text-decoration: none;
+  /* WCAG 2.5.8 minimum target size; the small mono caps would otherwise
+     leave a ~16 px tall hit area at the 320 px breakpoint. */
+  padding-block: var(--sp-2);
 }
 .nav a:hover,
 .nav a[aria-current="page"] {
