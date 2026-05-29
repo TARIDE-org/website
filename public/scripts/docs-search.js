@@ -56,10 +56,12 @@
     }
   }
 
+  // Search shortcut. Requires Ctrl or Cmd to comply with WCAG 2.1.4
+  // (single printable keys must be off-able, remappable, or focus-gated);
+  // gating on a modifier keeps the affordance without violating the SC.
   document.addEventListener('keydown', function (e) {
-    if (e.key !== '/') return;
-    var a = document.activeElement;
-    if (a && /^(input|textarea)$/i.test(a.tagName)) return;
+    if (e.key !== '/' || !(e.ctrlKey || e.metaKey)) return;
+    if (e.altKey || e.shiftKey) return;
     var input = document.querySelector('#docs-search input');
     if (input) {
       e.preventDefault();

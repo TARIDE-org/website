@@ -5,6 +5,30 @@ import sitemap from '@astrojs/sitemap';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
+// Shift markdown headings down by one, but only if the doc contains any
+// h1. Keeps the page's chrome h1 unique without introducing an h1 -> h3
+// skip on docs that already start at ##.
+function rehypeShiftHeadings() {
+  return (tree) => {
+    let hasH1 = false;
+    const find = (node) => {
+      if (hasH1) return;
+      if (node.type === 'element' && node.tagName === 'h1') hasH1 = true;
+      else if (node.children) node.children.forEach(find);
+    };
+    find(tree);
+    if (!hasH1) return;
+    const shift = (node) => {
+      if (node.type === 'element' && /^h[1-5]$/.test(node.tagName)) {
+        const n = parseInt(node.tagName.slice(1), 10);
+        node.tagName = `h${n + 1}`;
+      }
+      if (node.children) node.children.forEach(shift);
+    };
+    shift(tree);
+  };
+}
+
 export default defineConfig({
   site: 'https://taride.org',
   srcDir: './src/main',
@@ -22,6 +46,7 @@ export default defineConfig({
   },
   markdown: {
     rehypePlugins: [
+      rehypeShiftHeadings,
       rehypeSlug,
       [
         rehypeAutolinkHeadings,

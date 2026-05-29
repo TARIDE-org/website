@@ -336,7 +336,10 @@ section h2 {
 .docs-search .pagefind-ui__search-clear {
   display: flex;
   align-items: center;
-  padding-block: 0;
+  /* WCAG 2.5.8 minimum target size; replaces an earlier padding-block:0
+     that fixed the visual alignment but shrank the hit area. */
+  min-height: 24px;
+  min-width: 24px;
 }
 
 /* Doc header */
