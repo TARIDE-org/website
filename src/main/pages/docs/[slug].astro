@@ -15,7 +15,9 @@ export async function getStaticPaths() {
 
 const { doc, docs, prev, next } = Astro.props;
 const { Content, headings } = await render(doc);
-const toc = headings.filter((h) => h.depth >= 1 && h.depth <= 2);
+// Markdown headings are shifted down one by rehypeShiftHeadings, so the
+// structural backbone now lives at h2-h3. The page chrome h1 is separate.
+const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 
 const title = `${doc.data.title} | TARIDE`;
 const description = `TARIDE ${doc.data.title}, ${doc.data.version}. Part of the open European protocol for digital trust.`;
@@ -53,7 +55,7 @@ const description = `TARIDE ${doc.data.title}, ${doc.data.version}. Part of the 
 
         <Content />
 
-        <nav class="doc-nav" data-pagefind-ignore>
+        <nav class="doc-nav" data-pagefind-ignore aria-label="Adjacent specifications">
           {prev ? (
             <a class="prev" href={`/docs/${prev.id}/`}>
               <span class="dir">Previous</span>
