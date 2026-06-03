@@ -502,3 +502,21 @@ section h2 {
   color: var(--fg-soft);
   margin: 0 0 var(--sp-2);
 }
+.footer-affiliation {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--border);
+}
+/* OIN's mark uses fixed brand colours and may not be recoloured, so it sits
+   on a light card to stay legible on both the light and dark themes. */
+.oin-badge {
+  display: inline-block;
+  background: #ffffff;
+  padding: 10px 14px;
+  border-radius: 6px;
+}
+.oin-badge img {
+  display: block;
+  height: 36px;
+  width: auto;
+}

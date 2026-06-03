@@ -72,6 +72,16 @@ its own LICENSE; the copy shipped on the site retains the same licence.
 This site loads the Umami tracking script from a self-hosted instance.
 No Umami code is vendored in this repository.
 
+## Third-party trademarks (bundled assets)
+
+| Component | Licence | Source |
+| --- | --- | --- |
+| OIN 2.0 Community Member badge (`public/assets/oin-2.0-community-member.png`) | Trademark of Open Invention Network LLC; see `LICENSES/LicenseRef-OIN-Trademark.txt` | https://openinventionnetwork.com/our-members/oin-community-member-logos |
+
+The badge is reproduced unaltered to indicate TARIDE's membership of the
+Open Invention Network. The name, logo, and badge are trademarks of Open
+Invention Network LLC; no right to use OIN's marks is granted or implied.
+
 ## Adding a dependency
 
 Before adding a runtime or build dependency, verify its licence is on

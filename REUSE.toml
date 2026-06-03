@@ -43,6 +43,15 @@ precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Stichting TARIDE (TARIDE Foundation)"
 SPDX-License-Identifier = "CC-BY-4.0"
 
+# OIN community member badge: Open Invention Network's trademark, not a
+# TARIDE asset. Reproduced unaltered with permission to community members.
+# This override takes precedence over the public/assets/** rule above.
+[[annotations]]
+path = "public/assets/oin-2.0-community-member.png"
+precedence = "override"
+SPDX-FileCopyrightText = "Open Invention Network LLC"
+SPDX-License-Identifier = "LicenseRef-OIN-Trademark"
+
 # Generated doc diagrams (also gitignored; populated by pull-docs).
 [[annotations]]
 path = "public/docs/images/**"
