@@ -22,6 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Removed the exact `esbuild` override. Vite 8 depends on `esbuild@^0.28.1`
+  directly, so the pin no longer changes resolution, and as an exact version
+  it would have blocked future esbuild patch releases.
 - Upgraded Astro 6 to 7 (`^6.4.7` to `^7.1.3`). Astro 7 renders Markdown with
   its own pipeline by default; both site configs now set
   `markdown.processor: unified()` and depend on `@astrojs/markdown-remark`
