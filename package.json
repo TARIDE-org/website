@@ -24,7 +24,7 @@
     "check:main": "astro check --config astro.config.main.mjs"
   },
   "dependencies": {
-    "astro": "^6.4.7"
+    "astro": "^7.1.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
