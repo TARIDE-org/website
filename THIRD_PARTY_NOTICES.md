@@ -10,9 +10,10 @@ at the time of writing; for the authoritative current set, see
 
 | Component | Version | Licence | Source |
 | --- | --- | --- | --- |
-| astro | 5.18.1 | MIT | https://astro.build |
+| astro | 7.1.3 | MIT | https://astro.build |
 | @astrojs/check | 0.9.9 | MIT | https://github.com/withastro/astro/tree/main/packages/language-tools/astro-check |
-| @astrojs/sitemap | 3.7.2 | MIT | https://docs.astro.build/en/guides/integrations-guide/sitemap/ |
+| @astrojs/markdown-remark | 7.2.1 | MIT | https://github.com/withastro/astro/tree/main/packages/markdown/remark |
+| @astrojs/sitemap | 3.7.3 | MIT | https://docs.astro.build/en/guides/integrations-guide/sitemap/ |
 | pagefind | 1.5.2 | MIT | https://github.com/Pagefind/pagefind |
 | rehype-autolink-headings | 7.1.0 | MIT | https://github.com/rehypejs/rehype-autolink-headings |
 | rehype-slug | 6.0.0 | MIT | https://github.com/rehypejs/rehype-slug |

@@ -2,6 +2,7 @@
 // SPDX-FileCopyrightText: 2026 Stichting TARIDE (TARIDE Foundation)
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { unified } from '@astrojs/markdown-remark';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
@@ -45,6 +46,10 @@ export default defineConfig({
     service: { entrypoint: 'astro/assets/services/noop' },
   },
   markdown: {
+    // Astro 7 renders Markdown with its native pipeline by default. The
+    // rehype plugins below are unified/hast plugins, so keep the unified
+    // processor to render exactly as on Astro 6.
+    processor: unified(),
     rehypePlugins: [
       rehypeShiftHeadings,
       rehypeSlug,
