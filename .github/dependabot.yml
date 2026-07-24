@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2026 Stichting TARIDE (TARIDE Foundation)
+#
+# Security updates are enabled separately in the repository settings
+# (Settings > Code security). This file covers scheduled version updates,
+# which keep the lockfile current so security fixes are a small bump rather
+# than a major upgrade under pressure.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      # One PR per week for the routine churn; majors stay separate so a
+      # framework upgrade is always reviewed on its own.
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
