@@ -29,9 +29,16 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Clone design-system (canonical source)
-        run: |
-          rm -rf _design-system
-          git clone --depth 1 https://github.com/TARIDE-org/design-system.git _design-system
+        # Authenticated checkout, not a bare `git clone`: an anonymous clone depends on
+        # GitHub answering unauthenticated git-over-HTTPS, and a 401 there makes git fall
+        # back to an interactive password prompt that cannot succeed on a runner.
+        # persist-credentials: false keeps the token out of the tree we rsync to the server.
+        uses: actions/checkout@v7
+        with:
+          repository: TARIDE-org/design-system
+          path: _design-system
+          fetch-depth: 1
+          persist-credentials: false
 
       - name: Generate contents index
         run: python3 deploy/gen-design-index.py _design-system
