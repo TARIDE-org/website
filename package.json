@@ -24,11 +24,11 @@
     "check:main": "astro check --config astro.config.main.mjs"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^7.3.1",
-    "astro": "^7.3.2"
+    "@astrojs/markdown-remark": "^7.3.3",
+    "astro": "^7.4.1"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
+    "@astrojs/check": "^0.9.11",
     "@astrojs/sitemap": "^3.7.4",
     "pagefind": "^1.5.2",
     "rehype-autolink-headings": "^7.1.0",
